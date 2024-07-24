@@ -1,10 +1,9 @@
-import Header from "./components/Header";
-import Slider from "./components/Slider";
+import React from 'react';
+import MainRoute from './router/route';
+
 export default function App() {
+
   return (
-    <div className="flex flex-col xl:min-h-screen h-auto">
-      <Header />
-      <Slider/>
-    </div>
+   <MainRoute />
   );
 }

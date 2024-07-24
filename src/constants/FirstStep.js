@@ -121,3 +121,8 @@ export const AGES = [
   {id: 59, label: 60}
 ];
 
+export const NETWORKS = [
+  {id:0,title:"Pembe",color:"#EB1C74",yatarakTedaviFiyat:1987.20,yatarakveayaktaFiyat:8291.18},
+  {id:1,title:"Yeşil",color:"#44BD32",yatarakTedaviFiyat:1987.20,yatarakveayaktaFiyat:8291.18},
+  {id:2,title:"Lacivert",color:"#1F2346",yatarakTedaviFiyat:1987.20,yatarakveayaktaFiyat:8291.18},
+]

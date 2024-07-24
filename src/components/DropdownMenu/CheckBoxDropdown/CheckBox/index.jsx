@@ -15,14 +15,14 @@ export default function Checkbox({ item }) {
      <input type="checkbox" onChange={onChange} />
      <span> {item.label}</span>
      </div>
-      <div className={`${item.clicked?"visible":"invisible"}`}>
+      {/* <div className={`${item.clicked?"visible":"invisible"}`}>
       <Select
         data={AGES}
         isShowTitle={false}
         selected={selected}
         setSelected={setSelected}
       />
-        </div>
+        </div> */}
     </div>
   );
 }

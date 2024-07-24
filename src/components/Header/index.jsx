@@ -3,12 +3,12 @@ import React from "react";
 export default function Header() {
   const name = "";
   return (
-    <div className="border-b-[1px] h-28 px-20 p-2 flex items-center justify-center">
-      <div className="flex 2xl:w-2/3 w-full items-center justify-around">
+    <div className="border-b-[1px] flex items-center justify-center shadow-[#EAF1F6] shadow-2xl sticky z-50 top-0 bg-white">
+      <div className="flex container items-center justify-around">
         <img
           src="https://www.quicksigorta.com/Content/images/logo_quicksigorta_1x.webp"
           alt="Quicksigorta Logo"
-          className="h-20 cursor-pointer"
+          className="h-16 cursor-pointer"
         />
         <p className="text-[#EC1C74] text-xl cursor-pointer max-xl:hidden">
           Anında Satın Al

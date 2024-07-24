@@ -3,9 +3,12 @@ import Select from "../DropdownMenu/Select";
 import SearchDropdown from "../DropdownMenu/SearchDropdown";
 import CheckBoxDropdown from "../DropdownMenu/CheckBoxDropdown";
 import { GENDER } from "../../constants/FirstStep";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsSelected, setFiyatAl } from "../../redux/firstStepSlice";
 
 export default function Slider() {
-  const [selected, setSelected] = useState("Seçiniz");
+  const { isSelected,isSearchSelected } = useSelector((state) => state.firstStep);
+  const dispatch = useDispatch();
   const ButtonsName = [
     "Avantajlar",
     "Ek Hizmetler",
@@ -32,22 +35,30 @@ export default function Slider() {
           </div>
           <div className="grid grid-cols-5 gap-2 w-full">
             {ButtonsName.map((item) => (
-              <button className="bg-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500">
+              <button className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500">
                 {item}
               </button>
             ))}
           </div>
           <div className="grid grid-cols-6 gap-4 bg-[#E4EEF5] rounded-lg py-4 px-2">
             <div className="xl:col-span-1 col-span-6">
-              <Select data={GENDER} isShowTitle={true} selected={selected} setSelected={setSelected}/>
+              <Select
+                data={GENDER}
+                isShowTitle={true}
+                selected={isSelected}
+                setSelected={(value) => dispatch(setIsSelected(value))}
+              />
             </div>
             <div className="xl:col-span-3 col-span-6">
               <CheckBoxDropdown />
             </div>
             <div className="xl:col-span-1 col-span-6">
-              <SearchDropdown/>
+              <SearchDropdown />
             </div>
-            <div className="bg-[#EB1C74] text-white px-2 py-1 flex items-center justify-center rounded-lg xl:col-span-1 col-span-6">
+            <div
+              className="bg-[#EB1C74] text-white flex items-center justify-center rounded-lg xl:col-span-1 col-span-6 md:h-10 md:mt-5 self-center cursor-pointer"
+              onClick={()=>{(isSearchSelected==="Seçiniz")?alert("Lütfen tüm alanları doldurunuz."):dispatch(setFiyatAl(true))}}
+            >
               Fiyatı Gör
             </div>
           </div>
