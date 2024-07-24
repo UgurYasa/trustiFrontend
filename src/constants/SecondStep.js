@@ -42,3 +42,12 @@ export const HOWTOBUY = [
   "Müşteri onayıyla poliçe düzenlenir.",
   "E-posta ile poliçe seti iletilir.",
 ];
+
+export const VALIDATIONERRORS = [
+  "Lütfen geçerli Vergi kimlik numarası veya T.C. kimlik numarası giriniz.",
+  "Lütfen doğum tarihini giriniz.",
+  "Sigortalı e-posta adresi giriniz.",
+  "Sigortalı cep telefonu numarasını giriniz.",
+  "Lütfen Gizlilik Politikası, Kullanıcı Sözleşmesi, KVKK Aydınlatma Metni ve Poliçe Bilgilendirme Formunu okuduğunuzu kabul ediniz.",
+  "KVKK Aydınlatma Metnini okuduğunuzu kabul ediniz.",
+];

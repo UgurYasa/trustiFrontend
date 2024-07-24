@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import validationSchema, { TCKValidation } from "./validations";
 import { useNavigate } from "react-router-dom";
+import { VALIDATIONERRORS } from "../../../constants/SecondStep";
 
 export default function FirstForm() {
   const navigate = useNavigate();
+  const [click, setClick] = useState(true);
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       tcNo: "",
@@ -15,8 +17,17 @@ export default function FirstForm() {
       telNo: "",
       checkbox: [],
     },
+
     onSubmit: (values) => {
-      navigate("/info/2");
+      alert(JSON.stringify(values, null, 2));
+      TCKValidation(values.tcNo) &&
+      values.birthDate != "" &&
+      values.name != "" &&
+      values.email != "" &&
+      values.telNo != "" &&
+      values.checkbox.length === 2
+        ? navigate("/info/2")
+        : setClick(false);
     },
     validationSchema,
   });
@@ -34,7 +45,7 @@ export default function FirstForm() {
             <input
               name="tcNo"
               value={values.tcNo}
-              onChange={handleChange}
+              onChange={values.tcNo <= 11 ? handleChange : null}
               className={`w-full border-[1px] border-slate-400 rounded-md p-2 ${
                 values.tcNo.length < 11
                   ? "focus:border-red-600 focus:outline-none focus:ring-0"
@@ -45,15 +56,10 @@ export default function FirstForm() {
             />
             <p
               className={`my-1 p-2 text-white text-sm rounded-md ${
-                values.tcNo.length < 11
-                  ? "bg-[#F66565]"
-                  : TCKValidation(values.tcNo)
-                  ? "hidden"
-                  : "bg-[#F66565]"
+                !click ? "block bg-[#F66565]" : "hidden"
               }`}
             >
-              Lütfen geçerli Vergi kimlik numarası veya T.C. kimlik numarası
-              giriniz.
+              {VALIDATIONERRORS[0]}
             </p>
           </div>
           <div className="md:col-span-2 col-span-4">
@@ -66,11 +72,11 @@ export default function FirstForm() {
               className="w-full border-[1px] border-slate-400 rounded-md p-2"
             />
             <p
-              className={`my-1 p-2 text-white text-xs rounded-md md:w-1/2 w-full ${
-                values.birthDate != "" ? "hidden" : "bg-[#F66565]"
+              className={`my-1 p-2 text-white text-xs rounded-md xl:w-1/2 w-full ${
+                !click ? "block bg-[#F66565]" : "hidden"
               }`}
             >
-              Lütfen doğum tarihini giriniz.
+              {VALIDATIONERRORS[1]}
             </p>
           </div>
           <div className="col-span-4">
@@ -102,10 +108,10 @@ export default function FirstForm() {
             />
             <p
               className={`my-1 p-2 text-white text-xs rounded-md md:w-1/2 w-full ${
-                values.birthDate != "" ? "hidden" : "bg-[#F66565]"
+                !click ? "block bg-[#F66565]" : "hidden"
               }`}
             >
-              Sigortalı e-posta adresi giriniz.
+              {VALIDATIONERRORS[2]}
             </p>
           </div>
 
@@ -119,10 +125,10 @@ export default function FirstForm() {
             />
             <p
               className={`my-1 p-2 text-white text-xs rounded-md md:w-2/3 w-full ${
-                values.birthDate != "" ? "hidden" : "bg-[#F66565]"
+                !click ? "block bg-[#F66565]" : "hidden"
               }`}
             >
-              Sigortalı cep telefonu numarasını giriniz.
+              {VALIDATIONERRORS[3]}
             </p>
           </div>
         </div>
@@ -157,11 +163,10 @@ export default function FirstForm() {
         </div>
         <p
           className={` mb-2 p-2 text-white text-xs rounded-md w-full ${
-            values.birthDate != "" ? "hidden" : "bg-[#F66565]"
+            !click ? "block bg-[#F66565]" : "hidden"
           }`}
         >
-          Lütfen Gizlilik Politikası, Kullanıcı Sözleşmesi, KVKK Aydınlatma
-          Metni ve Poliçe Bilgilendirme Formunu okuduğunuzu kabul ediniz.
+          {VALIDATIONERRORS[4]}
         </p>
         <div className="flex flex-row mt-2 items-center w-full gap-2">
           <input
@@ -181,10 +186,10 @@ export default function FirstForm() {
         </div>
         <p
           className={` mb-2 p-2 text-white text-xs rounded-md md:w-1/2 w-full ${
-            values.birthDate != "" ? "hidden" : "bg-[#F66565]"
+            !click ? "block bg-[#F66565]" : "hidden"
           }`}
         >
-          KVKK Aydınlatma Metnini okuduğunuzu kabul ediniz.
+          {VALIDATIONERRORS[4]}
         </p>
         <div className="flex flex-row items-center w-full h-10 my-2 gap-2">
           <input

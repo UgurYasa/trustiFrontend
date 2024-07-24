@@ -7,7 +7,7 @@ const initialState = {
   OpenSelected: false,
   OpenSearchSelected: false,
   OpenCheckBoxSelected: false,
-  fiyatAl:false
+  fiyatAl: false,
 };
 
 const firstStepSlice = createSlice({
@@ -32,13 +32,14 @@ const firstStepSlice = createSlice({
     setOpenCheckBoxSelected: (state, action) => {
       state.OpenCheckBoxSelected = action.payload;
     },
-    clearAll : (state) => {
+    clearAll: (state) => {
       state.isSelected = "Seçiniz";
       state.isSearchSelected = "Seçiniz";
       state.isCheckBoxSelected = "Seçiniz";
       state.OpenSelected = false;
       state.OpenSearchSelected = false;
       state.OpenCheckBoxSelected = false;
+      state.fiyatAl = false;
     },
     closeOther: (state, action) => {
       if (action.payload === "OpenSelected") {
@@ -52,9 +53,9 @@ const firstStepSlice = createSlice({
         state.OpenSearchSelected = false;
       }
     },
-    setFiyatAl:(state,action)=>{
-      state.fiyatAl = action.payload
-    }
+    setFiyatAl: (state, action) => {
+      state.fiyatAl = action.payload;
+    },
   },
 });
 
@@ -67,6 +68,6 @@ export const {
   setOpenSearchSelected,
   closeOther,
   clearAll,
-  setFiyatAl
+  setFiyatAl,
 } = firstStepSlice.actions;
 export default firstStepSlice.reducer;

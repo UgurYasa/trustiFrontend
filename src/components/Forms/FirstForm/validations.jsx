@@ -1,9 +1,10 @@
 import { number, object, string } from "yup";
 
 const validations = object({
-  tcNo: "",
+  tcNo: string().required("T.C. Kimlik Numarası alanı boş bırakılamaz").max(11),
   birthDate: "",
-  name: string().required("Ad Soyad alanı boş bırakılamaz"),
+  name: string(),
+  // name: string().required("Ad Soyad alanı boş bırakılamaz"),
   email: string(),
   tcNo: number(),
   telNo: "",
