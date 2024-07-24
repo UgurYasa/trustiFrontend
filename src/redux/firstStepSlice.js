@@ -32,6 +32,14 @@ const firstStepSlice = createSlice({
     setOpenCheckBoxSelected: (state, action) => {
       state.OpenCheckBoxSelected = action.payload;
     },
+    clearAll : (state) => {
+      state.isSelected = "Seçiniz";
+      state.isSearchSelected = "Seçiniz";
+      state.isCheckBoxSelected = "Seçiniz";
+      state.OpenSelected = false;
+      state.OpenSearchSelected = false;
+      state.OpenCheckBoxSelected = false;
+    },
     closeOther: (state, action) => {
       if (action.payload === "OpenSelected") {
         state.OpenSearchSelected = false;
@@ -58,6 +66,7 @@ export const {
   setOpenCheckBoxSelected,
   setOpenSearchSelected,
   closeOther,
+  clearAll,
   setFiyatAl
 } = firstStepSlice.actions;
 export default firstStepSlice.reducer;

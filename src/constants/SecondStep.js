@@ -24,6 +24,11 @@ export const TIMELINE = [
     title: "Ödeme",
     active: false,
   },
+  {
+    id: 5,
+    title: "Poliçe",
+    active: false,
+  },
 ];
 
 export const HOWTOBUY = [

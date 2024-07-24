@@ -34,8 +34,8 @@ export default function Slider() {
             </p>
           </div>
           <div className="grid grid-cols-5 gap-2 w-full">
-            {ButtonsName.map((item) => (
-              <button className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500">
+            {ButtonsName.map((item,index) => (
+              <button key={index} className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500">
                 {item}
               </button>
             ))}

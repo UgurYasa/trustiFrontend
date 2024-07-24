@@ -25,7 +25,7 @@ export default function NetworkCard({ network }) {
           <Link
             className="mt-4 w-full text-center text-white text-lg rounded-xl"
             style={{ backgroundColor: network.color }}
-            to="/info/2"
+            to="/info/1"
           >
             Satın Al
           </Link>
