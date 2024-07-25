@@ -1,15 +1,26 @@
-import React, { useState } from "react";
-import { FAMILIES, AGES } from "../../../constants/FirstStep";
+import React, { useEffect, useState } from "react";
+import { FAMILIES } from "../../../constants/FirstStep";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import Select from "../Select";
 import Checkbox from "./CheckBox";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  setOpenCheckBoxSelected,
+  closeOther,
+} from "../../../redux/firstStepSlice";
 
 export default function CheckBoxDropdown() {
-  const [subSelected, setsubSelected] = useState("Seçiniz");
-  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
-  const {isCheckBoxSelected} = useSelector((state) => state.firstStep);
-  
+  const { isCheckBoxSelected, OpenCheckBoxSelected } = useSelector(
+    (state) => state.firstStep
+  );
+  const dispatch = useDispatch();
+  let Label =
+    isCheckBoxSelected.length === 1
+      ? isCheckBoxSelected[0]
+      : isCheckBoxSelected.slice(0, -1).join(",");
+  useEffect(() => {
+    Label = isCheckBoxSelected.slice(0, -1).join(",");
+    console.log(isCheckBoxSelected);
+  }, [isCheckBoxSelected]);
 
   return (
     <div className="flex flex-col relative w-full">
@@ -18,17 +29,18 @@ export default function CheckBoxDropdown() {
       <div
         className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"
         onClick={() => {
-          setIsHeaderMenuOpen(!isHeaderMenuOpen);
+          dispatch(setOpenCheckBoxSelected(!OpenCheckBoxSelected));
+          dispatch(closeOther("OpenCheckBoxSelected"));
         }}
       >
-        <span className="text-base">{subSelected}</span>
+        <span className="text-base">{Label}</span>
         <span>
           <MdOutlineKeyboardArrowDown />
         </span>
       </div>
       <div
-        className={`bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-60  flex flex-col gap-2 ${
-          isHeaderMenuOpen ? "visible" : "invisible"
+        className={`bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-60  flex flex-col gap-2 z-50 ${
+          OpenCheckBoxSelected ? "visible" : "invisible"
         }`}
       >
         {FAMILIES.map((item) => (
@@ -43,7 +55,14 @@ export default function CheckBoxDropdown() {
               <div>
                 <div className="w-full bg-slate-400 h-[1px] my-2" />
                 <div className="w-full h-10 my-2 flex items-center justify-end">
-                  <button className="w-1/2 bg-[#EB1C74] h-full flex items-center justify-center rounded-md text-white font-semibold">Seçimleri Tamamla</button>
+                  <button
+                    className="lg:w-1/2 w-full bg-[#EB1C74] h-full flex items-center justify-center rounded-md text-white font-semibold"
+                    onClick={() => {
+                      dispatch(setOpenCheckBoxSelected(!OpenCheckBoxSelected));
+                    }}
+                  >
+                    Seçimleri Tamamla
+                  </button>
                 </div>
               </div>
             )}

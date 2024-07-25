@@ -51,3 +51,118 @@ export const VALIDATIONERRORS = [
   "Lütfen Gizlilik Politikası, Kullanıcı Sözleşmesi, KVKK Aydınlatma Metni ve Poliçe Bilgilendirme Formunu okuduğunuzu kabul ediniz.",
   "KVKK Aydınlatma Metnini okuduğunuzu kabul ediniz.",
 ];
+
+export const FAMILYMEMBER = [
+  {
+    id: 0,
+    name: "ADI SOYADI",
+    tcNo: "KİMLİK NO",
+    telNo: "TELEFON",
+    proximity: "YAKINLIK DERECESİ",
+    risk: "RİSK İLİ",
+  },
+  {
+    id: 1,
+    name: "aaaaaaa aaaaaaa aaaaaaa",
+    tcNo: "41125054776",
+    telNo: "05347895621",
+    proximity: "Kendisi",
+    risk: "İstanbul",
+    birthDate: "2001-07-26",
+    address:
+      "Sarı Lale Sokak Vedat Günyol Caddesi No:3 Fay Plaza Ataşehir/İSTANBUL",
+  },
+];
+export const COLLATERALDETAILS = [
+  {
+    label: "Yatarak Tedavi Teminatları",
+    value: ["Limitsiz", "Limitsiz"],
+  },
+  { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+  { label: "Hizmetler", value: ["Check", "Check"] },
+];
+//   {
+//     title: "Pembe Network",
+//     color: "#EB1C74",
+//     option: [
+//       {
+//         value: "yatarak",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//       {
+//         value: "yatarakveayakta",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     title: "Yeşil Network",
+//     color: "#44BD32",
+//     option: [
+//       {
+//         value: "yatarak",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//       {
+//         value: "yatarakveayakta",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     title: "Lacivert Network",
+//     color: "#1F2346",
+//     option: [
+//       {
+//         value: "yatarak",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//       {
+//         value: "yatarakveayakta",
+//         skill: [
+//           {
+//             label: "Yatarak Tedavi Teminatları",
+//             value: ["Limitsiz", "Limitsiz"],
+//           },
+//           { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
+//           { label: "Hizmetler", value: ["Check", "Check"] },
+//         ],
+//       },
+//     ],
+//   },
+// ];

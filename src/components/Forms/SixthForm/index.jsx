@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearAll } from "../../../redux/firstStepSlice";
 
-export default function FifthForm() {
+export default function SixthForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -14,7 +14,7 @@ export default function FifthForm() {
     },
     onSubmit: (values) => {
       dispatch(clearAll());
-      navigate("/info/6");
+      navigate("/");
     },
   });
   return (

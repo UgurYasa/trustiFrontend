@@ -22,7 +22,7 @@ export default function Select({ data, isShowTitle, selected, setSelected }) {
         </span>
       </div>
       <div
-        className={`border-2 bg-white py-2 absolute  w-full h-20  flex flex-col gap-2 ${
+        className={`border-2 bg-white py-2 absolute  w-full h-20  flex flex-col gap-2 z-50 ${
           OpenSelected && isShowTitle ? "visible" : "invisible"
         } ${isShowTitle ? "mt-16" : "mt-10 z-50 h-40 overflow-auto w-10"}`}
       >

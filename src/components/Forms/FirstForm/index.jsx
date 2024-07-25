@@ -1,36 +1,38 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import validationSchema, { TCKValidation } from "./validations";
+import validationSchema, {
+  EmailValidation,
+  PhoneNumberValidation,
+  TCKValidation,
+} from "./validations";
 import { useNavigate } from "react-router-dom";
 import { VALIDATIONERRORS } from "../../../constants/SecondStep";
 
-export default function FirstForm() {
+export default function FirstForm({ click, setClick }) {
   const navigate = useNavigate();
-  const [click, setClick] = useState(true);
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       tcNo: "",
       birthDate: "",
       name: "",
       email: "",
-      tcNo: "",
       telNo: "",
       checkbox: [],
     },
 
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
       TCKValidation(values.tcNo) &&
       values.birthDate != "" &&
       values.name != "" &&
       values.email != "" &&
       values.telNo != "" &&
-      values.checkbox.length === 2
+      values.checkbox.length === 3
         ? navigate("/info/2")
         : setClick(false);
     },
     validationSchema,
   });
+
   return (
     <form onSubmit={handleSubmit}>
       <div className=" bg-[#EFF0FF] container min-h-screen">
@@ -45,7 +47,7 @@ export default function FirstForm() {
             <input
               name="tcNo"
               value={values.tcNo}
-              onChange={values.tcNo <= 11 ? handleChange : null}
+              onChange={handleChange}
               className={`w-full border-[1px] border-slate-400 rounded-md p-2 ${
                 values.tcNo.length < 11
                   ? "focus:border-red-600 focus:outline-none focus:ring-0"
@@ -102,9 +104,12 @@ export default function FirstForm() {
             <input
               name="email"
               value={values.email}
-              type="email"
               onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
+              className={`w-full border-[1px] border-slate-400 rounded-md p-2 ${
+                EmailValidation(values.email)
+                  ? "focus:border-green-600 focus:outline-none focus:ring-0 border-green-600"
+                  : "focus:border-red-600 focus:outline-none focus:ring-0"
+              }`}
             />
             <p
               className={`my-1 p-2 text-white text-xs rounded-md md:w-1/2 w-full ${
@@ -121,7 +126,11 @@ export default function FirstForm() {
               name="telNo"
               value={values.telNo}
               onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
+              className={`w-full border-[1px] border-slate-400 rounded-md p-2 ${
+                PhoneNumberValidation(values.telNo)
+                  ? "focus:border-green-600 focus:outline-none focus:ring-0 border-green-600"
+                  : "focus:border-red-600 focus:outline-none focus:ring-0"
+              }`}
             />
             <p
               className={`my-1 p-2 text-white text-xs rounded-md md:w-2/3 w-full ${

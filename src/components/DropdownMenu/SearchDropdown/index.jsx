@@ -53,7 +53,7 @@ export default function SearchDropdown() {
         </span>
       </div>
       <div
-        className={` bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-40  flex flex-col gap-2 ${
+        className={` bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-40  flex flex-col gap-2 z-50 ${
           OpenSearchSelected ? "visible" : "invisible"
         }`}
       >

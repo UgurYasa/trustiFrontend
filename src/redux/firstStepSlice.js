@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isSelected: "Seçiniz",
   isSearchSelected: "Seçiniz",
-  isCheckBoxSelected: "Seçiniz",
+  isCheckBoxSelected: ["Seçiniz"],
   OpenSelected: false,
   OpenSearchSelected: false,
   OpenCheckBoxSelected: false,
@@ -20,8 +20,13 @@ const firstStepSlice = createSlice({
     setisSearchSelected: (state, action) => {
       state.isSearchSelected = action.payload;
     },
-    setisCheckBoxSelected: (state, action) => {
-      state.isCheckBoxSelected = action.payload;
+    addisCheckBoxSelected: (state, action) => {
+      state.isCheckBoxSelected = [action.payload, ...state.isCheckBoxSelected];
+    },
+    deleteisCheckBoxSelected: (state, action) => {
+      state.isCheckBoxSelected = state.isCheckBoxSelected.filter(
+        (item) => item != action.payload
+      );
     },
     setOpenSelected: (state, action) => {
       state.OpenSelected = action.payload;
@@ -35,7 +40,7 @@ const firstStepSlice = createSlice({
     clearAll: (state) => {
       state.isSelected = "Seçiniz";
       state.isSearchSelected = "Seçiniz";
-      state.isCheckBoxSelected = "Seçiniz";
+      state.isCheckBoxSelected = ["Seçiniz"];
       state.OpenSelected = false;
       state.OpenSearchSelected = false;
       state.OpenCheckBoxSelected = false;
@@ -53,8 +58,13 @@ const firstStepSlice = createSlice({
         state.OpenSearchSelected = false;
       }
     },
-    setFiyatAl: (state, action) => {
-      state.fiyatAl = action.payload;
+    setFiyatAl: (state) => {
+      state.isSelected != "Seçiniz" &&
+      state.isSearchSelected != "Seçiniz" &&
+      state.isCheckBoxSelected != ["Seçiniz"]
+        ? (state.fiyatAl = true)
+        : (state.fiyatAl = false);
+      !state.fiyatAl && alert("Lütfen tüm alanları doldurunuz.");
     },
   },
 });
@@ -62,7 +72,8 @@ const firstStepSlice = createSlice({
 export const {
   setIsSelected,
   setisSearchSelected,
-  setisCheckBoxSelected,
+  addisCheckBoxSelected,
+  deleteisCheckBoxSelected,
   setOpenSelected,
   setOpenCheckBoxSelected,
   setOpenSearchSelected,

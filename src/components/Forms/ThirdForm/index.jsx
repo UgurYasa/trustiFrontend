@@ -1,96 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
-import validationSchema from "./validations";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { FormControlLabel, Switch } from "@mui/material";
+import { CiSearch } from "react-icons/ci";
+import { NETWORKS } from "../../../constants/FirstStep";
+import NetworkDetailCard from "../../NetworkDetailCard";
+import CollateralDetails from "../../CollateralDetails";
+import ThirdSection from "../../Sections/ThirdSection";
 
 export default function ThirdForm() {
   const navigate = useNavigate();
+  const [click, setClick] = useState(true);
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
-      tcNo: "",
-      birthDate: "",
-      name: "",
-      email: "",
-      tcNo: "",
-      telNo: "",
+      switch: false,
       checkbox: [],
     },
     onSubmit: (values) => {
-      navigate("/info/4");
+      values.switch ? navigate("/info/4") : setClick(false);
     },
-    validationSchema,
   });
   return (
     <form onSubmit={handleSubmit}>
       <div className=" bg-[#EFF0FF] container min-h-screen">
         <p className=" text-3xl text-[#EB1C74] font-semibold">
-          Sigortalı Bilgileri
+          Ömür Boyu yenileme garantisi
         </p>
         <div className="w-full h-[1px] bg-slate-400 my-2" />
-        {/*Information FORM */}
-        <div className="grid grid-cols-4 gap-3">
-          <div className="md:col-span-2 col-span-4">
-            <label>T.C. veya Yabancı Kimlik No</label>
-            <input
-              name="tcNo"
-              value={values.tcNo}
-              onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
-            />
-          </div>
-          <div className="md:col-span-2 col-span-4">
-            <label>Doğum Tarihi</label>
-            <input
-              name="birthDate"
-              value={values.birthDate}
-              type="date"
-              onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
-            />
-          </div>
-          <div className="col-span-4">
-            <label>Ad Soyad</label>
-            <input
-              name="name"
-              value={values.name}
-              type="text"
-              onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
-            />
-          </div>
-        </div>
-        <p className=" text-3xl text-[#EB1C74] font-semibold mt-5">
-          İletişim Bilgileri
+        <p className="my-10 text-slate-400">
+          Ömür Boyu Yenileme Garantisi (ÖBYG), sigortalının ilgili ürün için
+          sahip olduğu plan, network ve Özel Şart tarifesinin yenilenme
+          dönemindeki güncel halleriyle ömür boyu yenilenmesi taahhüdüdür.{" "}
         </p>
-        <div className="w-full h-[1px] bg-slate-400 my-2" />
-
-        {/*Connection FORM */}
-        <div className="grid grid-cols-4 md:gap-3 gap-5 my-4">
-          <div className="md:col-span-2 col-span-4">
-            <label>E-Posta Adresi</label>
-            <input
-              name="email"
-              value={values.email}
-              type="email"
-              onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
-            />
-          </div>
-          <div className="md:col-span-2 col-span-4">
-            <label>Cep Telefonu Numarası</label>
-            <input
-              name="telNo"
-              value={values.telNo}
-              onChange={handleChange}
-              className="w-full border-[1px] border-slate-400 rounded-md p-2"
-            />
-          </div>
-        </div>
-        <div className="flex items-center justify-center w-full h-10 bg-[#FEF6DD] my-4">
-          <p className="font-bold">
-            Bu poliçeyi SGK&#39;sı olan sigortalılar kullanabilir.
+        <div className="w-full h-20 bg-[#E8EAFF] flex flex-row items-center justify-between px-10">
+          <p className="text-black text-lg">
+            Ek prim ile ÖBYG değerlendirme süresini değişirmek istiyorum
           </p>
+          <FormControlLabel
+            control={
+              <Switch
+                checked={values.switch}
+                onChange={handleChange}
+                name="switch"
+              />
+            }
+          />
+        </div>
+
+        <div className="flex flex-row items-end justify-between">
+          <p className=" text-3xl text-[#EB1C74] font-semibold">
+            Network Seçimi
+          </p>
+          <div className="flex flex-row items-center cursor-pointer ">
+            <CiSearch className="text-black" />
+            <p className="xl:block hidden">Network Detaylarını incele</p>
+          </div>
+        </div>
+        <div className="w-full h-[1px] bg-slate-400 my-2" />
+        <div className="grid grid-cols-3 gap-3">
+          {NETWORKS.map((network) => (
+            <div className="xl:col-span-1 col-span-3">
+              <NetworkDetailCard network={network} />
+            </div>
+          ))}
+        </div>
+
+        <p className=" text-3xl text-[#EB1C74] font-semibold">
+          Teminat Detayları
+        </p>
+        <div className="w-full h-[1px] bg-slate-400 my-2" />
+        {!click && (
+          <CollateralDetails
+            value="Pembe Network"
+            color="#EB1C74"
+            isInpatient={true}
+          />
+        )}
+        <div className="xl:hidden block my-10">
+          <ThirdSection item={{ title: "Paket Seçiniz", amount: 0 }} />
         </div>
         <button
           type="submit"

@@ -4,10 +4,8 @@ const validations = object({
   tcNo: string().required("T.C. Kimlik Numarası alanı boş bırakılamaz").max(11),
   birthDate: "",
   name: string(),
-  // name: string().required("Ad Soyad alanı boş bırakılamaz"),
   email: string(),
-  tcNo: number(),
-  telNo: "",
+  telNo: number(),
 });
 
 export const TCKValidation = (identityNo) => {
@@ -42,4 +40,21 @@ export const TCKValidation = (identityNo) => {
     ((arr[0] + arr[2] + arr[4] + arr[6] + arr[8]) * 8) % 10 === arr[lastIndex]
   );
 };
+
+export const EmailValidation = (email) => {
+  // Regex pattern for validating email
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  // Test the email with the pattern
+  return emailPattern.test(email); // Burada test fonksiyonu kullanılıyor
+};
+
+export const PhoneNumberValidation = (phoneNumber) => {
+  // Regex pattern for validating Turkish phone numbers
+  const phonePattern = /^(?:\+90|0)?5\d{9}$/;
+
+  // Test the phone number with the pattern
+  return phonePattern.test(phoneNumber);
+};
+
 export default validations;

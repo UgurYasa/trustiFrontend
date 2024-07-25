@@ -1,9 +1,8 @@
 import React from "react";
 import { TIMELINE } from "../../constants/SecondStep";
 import { useNavigate } from "react-router-dom";
-import { parse } from "postcss";
 
-export default function TimeLine({ activated }) {
+export default function TimeLine({ activated}) {
   const navigate = useNavigate();
   const Dot = ({ item }) => {
     return (
@@ -11,7 +10,10 @@ export default function TimeLine({ activated }) {
         className={`xl:w-12 xl:h-12 w-10 h-10 rounded-full border-[1px] flex items-center justify-center cursor-pointer ${
           item.id < activated ? "border-[#EB1C74] " : "border-slate-400"
         }`}
-        onClick={() => {const number = parseInt(item.id)+1; navigate(`/info/${number}`)}}
+        onClick={() => {
+          const number = parseInt(item.id) + 1;
+          navigate(`/info/${number}`);
+        }}
       >
         <div
           className={`xl:w-5 xl:h-5 h-3 w-3 rounded-full border-[1px] ${

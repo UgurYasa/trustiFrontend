@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Select from "../DropdownMenu/Select";
 import SearchDropdown from "../DropdownMenu/SearchDropdown";
 import CheckBoxDropdown from "../DropdownMenu/CheckBoxDropdown";
 import { GENDER } from "../../constants/FirstStep";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsSelected, setFiyatAl } from "../../redux/firstStepSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Slider() {
-  const { isSelected,isSearchSelected } = useSelector((state) => state.firstStep);
+  const navigate = useNavigate();
+  const { isSelected } = useSelector((state) => state.firstStep);
   const dispatch = useDispatch();
   const ButtonsName = [
     "Avantajlar",
@@ -34,10 +36,15 @@ export default function Slider() {
             </p>
           </div>
           <div className="grid grid-cols-5 gap-2 w-full">
-            {ButtonsName.map((item,index) => (
-              <button key={index} className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500">
+            {ButtonsName.map((item, index) => (
+              <Link
+                key={index}
+                className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500 text-center"
+                to={"/"+item}
+                target="_blank"
+              >
                 {item}
-              </button>
+              </Link>
             ))}
           </div>
           <div className="grid grid-cols-6 gap-4 bg-[#E4EEF5] rounded-lg py-4 px-2">
@@ -57,7 +64,9 @@ export default function Slider() {
             </div>
             <div
               className="bg-[#EB1C74] text-white flex items-center justify-center rounded-lg xl:col-span-1 col-span-6 md:h-10 md:mt-5 self-center cursor-pointer"
-              onClick={()=>{(isSearchSelected==="Seçiniz")?alert("Lütfen tüm alanları doldurunuz."):dispatch(setFiyatAl(true))}}
+              onClick={() => {
+                dispatch(setFiyatAl());
+              }}
             >
               Fiyatı Gör
             </div>
