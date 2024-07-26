@@ -12,13 +12,8 @@ import SecondSection from "../components/Sections/SecondSection";
 import ThirdSection from "../components/Sections/ThirdSection";
 import NotFound from "./NotFound";
 import SixthForm from "../components/Forms/SixthForm";
+import { PRIM } from "../constants/SecondStep";
 export default function InfoScreen() {
-  const selectedNetwork1 = { proximity: "", title: "Paket Seçiniz", amount: 0 };
-  const selectedNetwork2 = {
-    proximity: "Kendisi",
-    title: "Lacivert Network - Yatarak Tedavi",
-    amount: 2944.8,
-  };
   const [validationClick, setValidationClick] = useState(true);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -47,14 +42,10 @@ export default function InfoScreen() {
       case "1":
         return <FirstSection />;
       case "2":
-        return (
-          <div className="max-xl:hidden">
-            <SecondSection />
-          </div>
-        );
+        return <SecondSection />;
 
       default:
-        return <ThirdSection item={selectedNetwork2} />;
+        return <ThirdSection item={PRIM} />;
     }
   };
   return (
@@ -75,30 +66,26 @@ export default function InfoScreen() {
       {/* TimeLine */}
       <div className="bg-[#E8EAFF] flex justify-center overflow-hidden min-h-screen">
         <div className="xl:container">
-          <div className="xl:container">
-            <div className="flex flex-row justify-center">
-              <div className="flex flex-col">
-                <div className="h-40 max-xl:mt-10 xl:mx-20 flex items-center xl:justify-end justify-center">
-                  <TimeLine activated={id} />
-                </div>
-                <FormInfo />
+          <div className="flex flex-row justify-between">
+            <div className="flex flex-col ">
+              <div className="h-40 max-xl:mt-10 xl:mx-20 flex items-center xl:justify-end justify-center">
+                <TimeLine activated={id} />
               </div>
-              <div className="xl:w-2/3  max-lg:hidden flex flex-col xl:mx-14 sticky py-5">
-                <div className="flex lg:flex-row flex-col items-center xl:justify-around  max-xl:justify-center h-40 bg-[#EB1C74] max-xl:p-2 max-xl:gap-10">
-                  <BsHeartPulse className="text-white text-5xl" />
-                  <div>
-                    <p className="font-black text-2xl text-white">Quick</p>
-                    <p className="font-black text-2xl text-white">
-                      Tamamlayıcı
-                    </p>
-                    <p className="font-bold text-xl text-white">
-                      <span className="font-black">Sağlık</span> Sigortası
-                    </p>
-                  </div>
+              <FormInfo />
+            </div>
+            <div className="xl:w-2/3 max-lg:hidden flex flex-col xl:mx-14 sticky py-5 ">
+              <div className="flex lg:flex-row flex-col items-center xl:justify-around  max-xl:justify-center h-40 bg-[#EB1C74] max-xl:p-2 max-xl:gap-10">
+                <BsHeartPulse className="text-white text-5xl" />
+                <div>
+                  <p className="font-black text-2xl text-white">Quick</p>
+                  <p className="font-black text-2xl text-white">Tamamlayıcı</p>
+                  <p className="font-bold text-xl text-white">
+                    <span className="font-black">Sağlık</span> Sigortası
+                  </p>
                 </div>
-                <div className="bg-white container xl:pb-10 rounded-b-xl">
-                  <SectionInfo />
-                </div>
+              </div>
+              <div className="bg-white container xl:pb-10 rounded-b-xl xl:block hidden">
+                <SectionInfo />
               </div>
             </div>
           </div>

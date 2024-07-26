@@ -25,7 +25,7 @@ export default function SecondForm() {
           onClick={() => {
             navigate("/yeni_kisi_ekle");
           }}
-          className="my-10 rounded-xl flex justify-center items-center bg-[#44BD32] py-2 text-white text-base  max-md:w-full lg:px-5 gap-2"
+          className="my-10 rounded-xl flex justify-center items-center bg-[#44BD32] py-2 text-white text-base  lg:w-1/3 w-full lg:px-5 gap-2"
         >
           <FaPlus />
           <div>Yeni Kişi Ekle</div>

@@ -22,6 +22,7 @@ export default function FirstForm({ click, setClick }) {
 
     onSubmit: (values) => {
       TCKValidation(values.tcNo) &&
+      values.tcNo != "" &&
       values.birthDate != "" &&
       values.name != "" &&
       values.email != "" &&
@@ -47,7 +48,9 @@ export default function FirstForm({ click, setClick }) {
             <input
               name="tcNo"
               value={values.tcNo}
-              onChange={handleChange}
+              onChange={(e) => {
+                e.target.value.length <= 11 && handleChange(e);
+              }}
               className={`w-full border-[1px] border-slate-400 rounded-md p-2 ${
                 values.tcNo.length < 11
                   ? "focus:border-red-600 focus:outline-none focus:ring-0"

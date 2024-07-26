@@ -1,7 +1,7 @@
 import { number, object, string } from "yup";
 
 const validations = object({
-  tcNo: string().required("T.C. Kimlik Numarası alanı boş bırakılamaz").max(11),
+  tcNo: string().max(11),
   birthDate: "",
   name: string(),
   email: string(),

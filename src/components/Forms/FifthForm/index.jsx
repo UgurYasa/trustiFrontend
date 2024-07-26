@@ -1,36 +1,17 @@
 import React from "react";
-import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { clearAll } from "../../../redux/firstStepSlice";
+import { QuestionCard } from "../../DeclarationForm";
+import { INSURER } from "../../../constants/FourthStep";
+import PaymentForm from "../../PaymentForm";
 
 export default function FifthForm() {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  const { handleSubmit, handleChange, values } = useFormik({
-    initialValues: {
-      checkbox: [],
-    },
-    onSubmit: (values) => {
-      dispatch(clearAll());
-      navigate("/info/6");
-    },
-  });
   return (
-    <form onSubmit={handleSubmit}>
-      <div className=" bg-[#EFF0FF] container min-h-screen">
-        <p className=" text-3xl text-[#EB1C74] font-semibold">
-          Sigortalı Bilgileri
-        </p>
-
-        <button
-          type="submit"
-          className="my-10 rounded-xl flex justify-center items-center bg-[#44BD32] py-2 text-white text-base w-full"
-        >
-          Devam Et
-        </button>
-      </div>
-    </form>
+    <div className=" bg-[#EFF0FF] container min-h-screen">
+      <p className=" text-3xl text-[#EB1C74] font-semibold">Sigorta Ettiren</p>
+      <div className="w-full h-[1px] bg-slate-400 my-2" />
+      <QuestionCard item={INSURER[0]} control={1} />
+      <p className=" text-3xl text-[#EB1C74] font-semibold mt-4">Ödeme Türü</p>
+      <div className="w-full h-[1px] bg-slate-400 my-2" />
+      <PaymentForm />
+    </div>
   );
 }

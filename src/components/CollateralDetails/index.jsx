@@ -7,11 +7,11 @@ export default function CollateralDetails({ value, color, isInpatient }) {
     return (
       <div className="grid grid-cols-4 mt-4 border-2">
         <div
-          className="col-span-2  flex flex-row justify-between items-end p-3 border-[1px] border-slate-300"
+          className="col-span-2  flex xl:flex-row flex-col justify-between xl:items-end items-start p-3 border-[1px] border-slate-300"
           style={{ backgroundColor: color }}
         >
-          <p className="text-white">Teminatlar</p>
-          <div className=" px-1 rounded-full bg-white flex items-center justify-center">
+          <p className="text-white ">Teminatlar</p>
+          <div className=" px-1 rounded-full bg-white flex items-center justify-center max-xl:w-full">
             {value}
           </div>
         </div>

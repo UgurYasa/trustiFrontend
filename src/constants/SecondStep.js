@@ -81,6 +81,16 @@ export const COLLATERALDETAILS = [
   { label: "Ayakta Tedavi Teminatları", value: ["Cancel", "Check"] },
   { label: "Hizmetler", value: ["Check", "Check"] },
 ];
+
+export const PRIM = { proximity: "", title: "Paket Seçiniz", amount: 0 };
+
+//PRIM
+// {
+//   proximity: "Kendisi",
+//   title: "Lacivert Network - Yatarak Tedavi",
+//   amount: 2944.8,
+// }
+//COLLATERALDETAILS
 //   {
 //     title: "Pembe Network",
 //     color: "#EB1C74",
@@ -166,3 +176,4 @@ export const COLLATERALDETAILS = [
 //     ],
 //   },
 // ];
+

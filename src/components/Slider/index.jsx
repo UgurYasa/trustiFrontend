@@ -40,8 +40,7 @@ export default function Slider() {
               <Link
                 key={index}
                 className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500 text-center"
-                to={"/"+item}
-                target="_blank"
+                to={"/" + item}
               >
                 {item}
               </Link>

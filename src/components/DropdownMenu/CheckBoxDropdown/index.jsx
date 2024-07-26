@@ -19,7 +19,6 @@ export default function CheckBoxDropdown() {
       : isCheckBoxSelected.slice(0, -1).join(",");
   useEffect(() => {
     Label = isCheckBoxSelected.slice(0, -1).join(",");
-    console.log(isCheckBoxSelected);
   }, [isCheckBoxSelected]);
 
   return (

@@ -7,6 +7,7 @@ import { NETWORKS } from "../../../constants/FirstStep";
 import NetworkDetailCard from "../../NetworkDetailCard";
 import CollateralDetails from "../../CollateralDetails";
 import ThirdSection from "../../Sections/ThirdSection";
+import { PRIM } from "../../../constants/SecondStep";
 
 export default function ThirdForm() {
   const navigate = useNavigate();
@@ -72,13 +73,13 @@ export default function ThirdForm() {
         <div className="w-full h-[1px] bg-slate-400 my-2" />
         {!click && (
           <CollateralDetails
-            value="Pembe Network"
-            color="#EB1C74"
+            value="Lacivert Network"
+            color="#1F2346"
             isInpatient={true}
           />
         )}
         <div className="xl:hidden block my-10">
-          <ThirdSection item={{ title: "Paket Seçiniz", amount: 0 }} />
+          <ThirdSection item={PRIM} />
         </div>
         <button
           type="submit"

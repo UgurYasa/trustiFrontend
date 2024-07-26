@@ -37,7 +37,7 @@ export default function TimeLine({ activated}) {
           <Dot item={item} />
           {item.title != "Poliçe" && (
             <div
-              className={`xl:w-20 w-10 h-[2px] ${
+              className={`xl:w-20 md:w-10 w-2 h-[2px] ${
                 item.id < activated - 1 ? "bg-[#EB1C74]" : "bg-slate-400"
               }`}
             />
