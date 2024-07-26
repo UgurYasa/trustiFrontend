@@ -4,8 +4,9 @@ import { censorWords } from "../../constants/Functions";
 import { FAMILYMEMBER } from "../../constants/SecondStep";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { LiaStethoscopeSolid } from "react-icons/lia";
+import RadioButton from "../RadioButton";
 
-export const QuestionCard = ({ item, control = 0 }) => {
+export const QuestionCard = ({ item, control = 0, setList,option }) => {
   return (
     <div className="grid grid-cols-6 max-xl:my-4">
       <div
@@ -24,11 +25,16 @@ export const QuestionCard = ({ item, control = 0 }) => {
             : "xl:col-span-1 col-span-3 border-[1px] border-slate-300"
         } p-2 flex flex-row items-center xl:gap-2 300 max-xl:gap-2`}
       >
-        <input
-          type="radio"
-          style={{ width: 20, height: 20 }}
-          className={`${control === 0 && item.id === 0 && "hidden"}`}
-        />
+        <div className={`${control === 0 && item.id === 0 && "hidden"}`}>
+          <RadioButton
+            value="Evet"
+            selectedValue={item.answer}
+            item={item}
+            setList={setList}
+            control={option}
+          />
+        </div>
+
         <p>
           {control === 1
             ? "Evet"
@@ -46,7 +52,14 @@ export const QuestionCard = ({ item, control = 0 }) => {
             : "xl:col-span-1 col-span-3 border-[1px] border-slate-300"
         } p-2 flex flex-row items-center xl:gap-2 300 max-xl:gap-2`}
       >
-        <input type="radio" style={{ width: 20, height: 20 }} />
+        <RadioButton
+          value="Hayır"
+          selectedValue={item.answer}
+          item={item}
+          setList={setList}
+          control={option}
+        />
+
         <p>
           {control === 1
             ? "Hayır"
@@ -60,9 +73,8 @@ export const QuestionCard = ({ item, control = 0 }) => {
     </div>
   );
 };
-export default function DeclarationForm() {
+export default function DeclarationForm({ list, setList }) {
   const [click, setClick] = useState(true);
-
   return (
     <div>
       <div className="w-full bg-white shadow-lg shadow-slate-500 rounded-2xl flex flex-col px-4 py-5 my-10">
@@ -78,25 +90,25 @@ export default function DeclarationForm() {
           </div>
           <FaChevronDown
             className={`text-[#EB1C74] text-xl cursor-pointer ${
-              !click && "hidden"
-            }`}
-            onClick={() => {
-              setClick(false);
-            }}
-          />
-          <FaChevronUp
-            className={`text-[#EB1C74] text-xl cursor-pointer ${
               click && "hidden"
             }`}
             onClick={() => {
               setClick(true);
             }}
           />
+          <FaChevronUp
+            className={`text-[#EB1C74] text-xl cursor-pointer ${
+              !click && "hidden"
+            }`}
+            onClick={() => {
+              setClick(false);
+            }}
+          />
         </div>
         {click && (
           <div>
-            {DECLARATION.map((item) => (
-              <QuestionCard key={item.id} item={item} />
+            {list.slice(0, -2).map((item) => (
+              <QuestionCard key={item.id} item={item} setList={setList} option={true}/>
             ))}
           </div>
         )}

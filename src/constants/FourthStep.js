@@ -1,81 +1,79 @@
 export const DECLARATION = [
-  { id: 0, question: "", answer: "false" },
+  { id: 0, question: "", answer: "" },
   {
     id: 1,
     question: "Her Türlü kanser, iyi huylu veya kötü huylu kitleler",
-    answer: "false",
+    answer: "",
   },
   {
     id: 2,
     question:
       "Kalp ve damar hastalıkları (venöz yetmezlik dahil, kalp kapak hastalıkları, hipertansiyon vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 3,
     question:
       "Metabolik ve endokrin sistem hastalıkları (Diabetes melilitus (şeker), cushing,obezite,tiroid vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 4,
     question:
       "Kronik karaciğer (örn.kronik hepatitler) ve akciğer hastalıkları (KOAH, Sarkoidoz vb.",
-    answer: "false",
+    answer: "",
   },
   {
     id: 5,
     question:
       "Omurga ve vertebral kolon hastalıkları (bel fıtığı, boyun fıtığı, skolyoz vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 6,
     question:
       "Romatizmal hastalıklar, sistemik bağ dokusu hastalıkları (romatoid artrit, ankolizan spondilit, sistemik lupus eritematozus (SLE), behçet, gut, psoriatik artrit vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 7,
     question:
       "Beyin ve sinir sistemi hastalıkları (inme, serebal palsi, epilepsi, kitler,demiyelinizan hastalıklar, multiple skleroz vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 8,
     question:
       "Doğumsal ve genetik hastalıklar (ailevi akdeniz ateşi (FMF), kistik fibrozis, akdeniz anemisi, kromozon anomalileri)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 9,
-    question:
-      "Kan Hastalıkları (hemofili, poisitemi, ITP, aplastik anemi vb.)",
-    answer: "false",
+    question: "Kan Hastalıkları (hemofili, poisitemi, ITP, aplastik anemi vb.)",
+    answer: "",
   },
   {
     id: 10,
     question:
       "Organ nakiller, organ yetmezliği, tek böbreklilik, tam işitme ve görme kaybı",
-    answer: "false",
+    answer: "",
   },
   {
     id: 11,
     question:
       "Kronik ilerleyici kas hastalıkları (myasteria,müsküler distrofileler vb.)",
-    answer: "false",
+    answer: "",
   },
   {
     id: 12,
-    question:
-      "Alzheimer ve parkinson",
-    answer: "false",
+    question: "Alzheimer ve parkinson",
+    answer: "",
   },
   {
-    id: 12,
+    id: 13,
     question:
       "Yukarda sayılanlar dışında tedavisi devam eden veya planlanan hastalığınız veya şikayetiniz var mı?",
-    answer: "false",
+    answer: "",
   },
 ];
 
@@ -84,12 +82,12 @@ export const OTHERCOMPANY = [
     id: 0,
     question:
       "Sigortalı adayımızın/adaylarımızın diğer sigorta şirketlerinde sağlık poliçesi var mı ?",
-    answer: "false",
+    answer: "",
   },
   {
     id: 1,
     question: "",
-    answer: "false",
+    answer: "",
   },
 ];
 
@@ -97,7 +95,7 @@ export const INSURER = [
   {
     id: 0,
     question: "Sigorta ettiren aynı kişi mi?",
-    answer: "false",
+    answer: "",
   },
 ];
 

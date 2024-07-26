@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { clearAll } from "../../redux/firstStepSlice";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import {
   isValidCardNumber,
@@ -12,14 +12,15 @@ import {
   maskCvv,
   maskExpDate,
 } from "./validations";
-import { PRIM } from "../../constants/SecondStep";
 import ThirdSection from "../Sections/ThirdSection";
 import { BackCard } from "./CreditCard/BackFront";
 import { FrontCard } from "./CreditCard/FrontCard";
 
-export default function PaymentForm() {
+export default function PaymentForm({isValid}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { PRIM } = useSelector((state) => state.thirdStep);
+
   const [clicked, setClicked] = useState(false);
   const [card, setCard] = useState("XXXX-XXXX-XXXX-XXXX");
   const [date, setDate] = useState("AA/YY");
@@ -38,7 +39,8 @@ export default function PaymentForm() {
       isValidCardNumber(values.cardNo) &&
       isValidExpDate(values.expDate) &&
       isValidCvv(values.CVV) &&
-      isValidName(values.fName, values.lName)
+      isValidName(values.fName, values.lName)&&
+      isValid
         ? navigate("/info/6")
         : setCheck(false);
 

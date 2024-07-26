@@ -2,7 +2,7 @@ import React from "react";
 import SecondSection from "../SecondSection";
 import { formatNumber } from "../../../constants/Functions";
 
-export default function ThirdSection({ item }) {
+export default function ThirdSection({item}) {
   return (
     <div>
       <SecondSection />
@@ -20,7 +20,7 @@ export default function ThirdSection({ item }) {
         </div>
       )}
       <div className="w-full px-4 py-2 bg-[#E8EAFF] shadow-xl">
-        <p>{item.title}</p>
+        <p>{item.description}</p>
         <p className="text-lg font-bold text-slate-500">
           {formatNumber(item.amount)} TL
         </p>

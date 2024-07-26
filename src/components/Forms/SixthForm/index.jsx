@@ -1,13 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { POLICY } from "../../../constants/FourthStep";
 import ThirdSection from "../../Sections/ThirdSection";
-import { PRIM } from "../../../constants/SecondStep";
 
 export default function SixthForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { PRIM } = useSelector((state) => state.thirdStep);
+
 
   const Lines = ({ item }) => {
     return (

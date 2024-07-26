@@ -1,15 +1,22 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { formatNumber } from "../../constants/Functions";
+import RadioButton from "../Forms/ThirdForm/RadioButton";
 
-export default function NetworkDetailCard({ network }) {
-  const TreatmentCard = ({ title, amount }) => {
+export default function NetworkDetailCard({ network, setList,list }) {
+  const TreatmentCard = ({ title, amount, item }) => {
     const pricing = formatNumber(amount);
     return (
       <div className="w-full">
         <div className="container bg-[#7E7E7E] mt-5 rounded-t-md flex flex-col items-center justify-center py-3">
-          <input type="radio" style={{ width: 25, height: 25 }} />
+          <RadioButton
+            value="Evet"
+            selectedValue={item.answer}
+            item={item}
+            setList={setList}
+            list={list}
+            subIndex={network.id}
+          />
           <p className="pt-2 font-semibold text-white text-lg text-center">
             {title}
           </p>
@@ -50,7 +57,7 @@ export default function NetworkDetailCard({ network }) {
         className={`h-12 flex items-center justify-center`}
         style={{ backgroundColor: network.color }}
       >
-        <p className="text-white font-black text-2xl ">{`${network.title} Network`}</p>
+        <p className="text-white font-black text-2xl ">{`${network.value} Network`}</p>
       </div>
 
       <InstitutionCard
@@ -68,14 +75,15 @@ export default function NetworkDetailCard({ network }) {
         number={493}
         desc="Pembe Network'e dahil tüm kurumlar"
       />
-      <TreatmentCard
-        amount={network.yatarakTedaviFiyat}
-        title="Yatarak Tedavi"
-      />
-      <TreatmentCard
-        amount={network.yatarakveayaktaFiyat}
-        title="Yatarak ve Ayakta Tedavi"
-      />
+
+      {network.option.map((element, index) => (
+        <TreatmentCard
+          key={index}
+          item={element}
+          amount={element.amount}
+          title={element.title}
+        />
+      ))}
     </div>
   );
 }

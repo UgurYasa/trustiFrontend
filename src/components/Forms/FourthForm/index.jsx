@@ -3,19 +3,26 @@ import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import DeclarationForm, { QuestionCard } from "../../DeclarationForm";
 import { FaInfoCircle } from "react-icons/fa";
-import { OTHERCOMPANY } from "../../../constants/FourthStep";
+import { DECLARATION, OTHERCOMPANY } from "../../../constants/FourthStep";
 import ThirdSection from "../../Sections/ThirdSection";
-import { PRIM } from "../../../constants/SecondStep";
+import { useSelector } from "react-redux";
+
 
 export default function FourthForm() {
   const navigate = useNavigate();
+  const { PRIM } = useSelector((state) => state.thirdStep);
+  const [list, setList] = React.useState(OTHERCOMPANY);
+  const [list2, setList2] = React.useState(DECLARATION);
+  const allChecked = (list) => {
+    return list.every((item) => item.answer !== "");
+  };
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       checkbox: [],
     },
     onSubmit: (values) => {
-      navigate("/info/5");
+      allChecked(list) && allChecked(list2) && navigate("/info/5");
     },
   });
   return (
@@ -37,7 +44,7 @@ export default function FourthForm() {
           tıbbi belgeleri ekleyiniz.
         </p>
         {/* FORM */}
-        <DeclarationForm />
+        <DeclarationForm list={list2} setList={setList2} />
         {/* Dİğer Sigorta Şirketi */}
         <div className="flex flex-row items-center justify-between">
           <p className=" text-3xl text-[#EB1C74] font-semibold">
@@ -49,12 +56,22 @@ export default function FourthForm() {
           </div>
         </div>
         <div className="w-full h-[1px] bg-slate-400 my-2" />
-        <QuestionCard item={OTHERCOMPANY[0]} control={1} />
+        <QuestionCard
+          item={list[0]}
+          control={1}
+          setList={setList}
+          option={false}
+        />
         <p className=" text-3xl text-[#EB1C74] font-semibold mt-3">
           Beyan Onay Yöntemi
         </p>
         <div className="w-full h-[1px] bg-slate-400 my-2" />
-        <QuestionCard item={OTHERCOMPANY[1]} control={2} />
+        <QuestionCard
+          item={list[1]}
+          control={2}
+          setList={setList}
+          option={false}
+        />
         <div className="max-xl:block hidden">
           <ThirdSection item={PRIM} />
         </div>

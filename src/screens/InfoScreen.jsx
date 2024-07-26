@@ -12,9 +12,12 @@ import SecondSection from "../components/Sections/SecondSection";
 import ThirdSection from "../components/Sections/ThirdSection";
 import NotFound from "./NotFound";
 import SixthForm from "../components/Forms/SixthForm";
-import { PRIM } from "../constants/SecondStep";
+import { useSelector } from "react-redux";
+
 export default function InfoScreen() {
   const [validationClick, setValidationClick] = useState(true);
+  const { PRIM } = useSelector((state) => state.thirdStep);
+
   const { id } = useParams();
   const navigate = useNavigate();
   const FormInfo = () => {
