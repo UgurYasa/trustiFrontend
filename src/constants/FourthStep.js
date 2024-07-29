@@ -111,6 +111,11 @@ export const POLICY = [
       },
       {
         id: 1,
+        label: "Poliçe Numarası",
+        value: "012345678",
+      },
+      {
+        id: 2,
         label: "Telefon",
         value: "+90 212 000 00 00",
       },
@@ -128,7 +133,7 @@ export const POLICY = [
       {
         id: 1,
         label: "Cep Telefon",
-        value: "5374574597",
+        value: "5874848445",
       },
       {
         id: 2,

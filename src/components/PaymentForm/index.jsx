@@ -16,7 +16,7 @@ import ThirdSection from "../Sections/ThirdSection";
 import { BackCard } from "./CreditCard/BackFront";
 import { FrontCard } from "./CreditCard/FrontCard";
 
-export default function PaymentForm({isValid}) {
+export default function PaymentForm({ isValid }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { PRIM } = useSelector((state) => state.thirdStep);
@@ -121,7 +121,16 @@ export default function PaymentForm({isValid}) {
             value={values.cardNo}
             type="text"
             onChange={(e) => {
-              e.target.value.length <= 16 && handleChange(e);
+              // if (e.target.value.split("-").join("").length <= 16) {
+              //   let value = e.target.value.replace(/\D/g, ""); // Sadece rakamları al
+              //   let formattedValue = value.match(/.{1,4}/g); // 4'lük gruplar halinde böl
+
+              //   if (formattedValue) {
+              //     e.target.value = formattedValue.join("-"); // Grupları tire ile birleştir
+              //   }
+              //   handleChange(e);
+              // }
+                e.target.value.length <= 16 && handleChange(e);
             }}
             onFocus={() => {
               setClicked(false);
