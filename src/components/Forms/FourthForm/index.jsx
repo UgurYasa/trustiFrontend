@@ -6,10 +6,10 @@ import { FaInfoCircle } from "react-icons/fa";
 import { DECLARATION, OTHERCOMPANY } from "../../../constants/FourthStep";
 import ThirdSection from "../../Sections/ThirdSection";
 import { useSelector } from "react-redux";
-
+import Swal from "sweetalert2";
 
 export default function FourthForm() {
-  const {customer_No} = useParams();
+  const { customer_No } = useParams();
   const navigate = useNavigate();
   const { PRIM } = useSelector((state) => state.thirdStep);
   const [list, setList] = React.useState(OTHERCOMPANY);
@@ -17,13 +17,34 @@ export default function FourthForm() {
   const allChecked = (list) => {
     return list.every((item) => item.answer !== "");
   };
-
+  const onError = () => {
+    Swal.fire({
+      title: "Bütün Soruları Cevaplayınız",
+      icon: "error",
+      showClass: {
+        popup: `
+        animate__animated
+        animate__fadeInUp
+        animate__faster
+      `,
+      },
+      hideClass: {
+        popup: `
+        animate__animated
+        animate__fadeOutDown
+        animate__faster
+      `,
+      },
+    });
+  };
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       checkbox: [],
     },
     onSubmit: (values) => {
-      allChecked(list) && allChecked(list2) && navigate("/info/5/"+customer_No);
+      allChecked(list) && allChecked(list2)
+        ? navigate("/info/5/" + customer_No)
+        : onError();
     },
   });
   return (

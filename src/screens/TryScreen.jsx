@@ -14,20 +14,21 @@ function TryScreen() {
     () => {},
     () => {}
   );
-  const [declaration,setDeclarationList] = useState(DECLARATION);
+  const [declaration, setDeclarationList] = useState(DECLARATION);
   useEffect(() => {
-   if(DeclarationPerson){
-    const updatedList = DeclarationPerson&& DeclarationPerson.map((item) => ({
-      id: item.declaration_Id,
-      question: item.declaration_question,
-      answer: item.answer,
-    }));
-    
-    setDeclarationList(updatedList?updatedList:[]);
-    console.log(updatedList);
-   }
+    if (DeclarationPerson) {
+      const updatedList =
+        DeclarationPerson &&
+        DeclarationPerson.map((item) => ({
+          id: item.declaration_Id,
+          question: item.declaration_question,
+          answer: item.answer,
+        }));
+
+      setDeclarationList(updatedList ? updatedList : []);
+    }
   }, [DeclarationPerson]);
-  
+
   return (
     <div>
       <h2>Declaration</h2>
@@ -38,11 +39,12 @@ function TryScreen() {
           </div>
         ))}
       <h2 className="mt-96">Declaration Person</h2>
-     {DeclarationPerson &&DeclarationPerson.map((item, index) => 
-    <div key={index}>
-      <p>{`Name: ${item.firstname} ${item.lastname} ---> Question:  ${item.declaration_question} ---> Answer: ${item.answer} ---> Description: ${item.description}`}</p>
-      </div>
-    )}
+      {DeclarationPerson &&
+        DeclarationPerson.map((item, index) => (
+          <div key={index}>
+            <p>{`Name: ${item.firstname} ${item.lastname} ---> Question:  ${item.declaration_question} ---> Answer: ${item.answer} ---> Description: ${item.description}`}</p>
+          </div>
+        ))}
     </div>
   );
 }

@@ -66,7 +66,7 @@ export default function PaymentForm({ isValid }) {
       expDate: "",
     },
     onSubmit: (values) => {
-      if (CardValidation) {
+      if (CardValidation(values)) {
         Swal.fire({
           title: "Ödeme Yapmak İstediğinize Emin Misiniz?",
           showDenyButton: true,

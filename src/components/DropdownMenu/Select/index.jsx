@@ -10,15 +10,15 @@ export default function Select({ data, isShowTitle, selected, setSelected }) {
     <div className="flex flex-col relative">
       <p className={`${isShowTitle ? "block" : "hidden"}`}>Cinsiyet</p>
       <div
-        className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"
+        className="bg-white rounded-md cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2 border-[2px] border-[#CECECE] hover:border-pink-500"
         onClick={() => {
           dispatch(setOpenSelected(!OpenSelected));
           dispatch(closeOther("OpenSelected"));
         }}
       >
-        <span className="text-base">{selected}</span>
+        <span className="text-base opacity-70">{selected}</span>
         <span>
-          <MdOutlineKeyboardArrowDown />
+          <MdOutlineKeyboardArrowDown className="text-2xl text-[#CECECE]"/>
         </span>
       </div>
       <div

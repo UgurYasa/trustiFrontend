@@ -1,14 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { POLICY } from "../../../constants/FourthStep";
+import { useSelector } from "react-redux";
+
 import ThirdSection from "../../Sections/ThirdSection";
 import PolicyPDF from "../../PolicyPDF";
 import Swal from "sweetalert2";
 
 export default function SixthForm() {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const { PRIM } = useSelector((state) => state.thirdStep);
 
   return (
@@ -26,7 +25,7 @@ export default function SixthForm() {
             icon: "success",
             title: "Başvurunuz başarıyla alınmıştır.",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
           navigate("/");
         }}

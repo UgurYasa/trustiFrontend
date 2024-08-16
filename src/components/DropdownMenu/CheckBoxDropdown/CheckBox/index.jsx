@@ -14,7 +14,7 @@ export default function Checkbox({ item }) {
       : dispatch(deleteisCheckBoxSelected(item.label));
   };
   return (
-    <div className="flex flex-row items-center justify-between">
+    <div className="flex flex-row items-center justify-between cursor-pointer">
       <div className="flex flex-row items-center w-2/3 gap-3">
         <input
           type="checkbox"

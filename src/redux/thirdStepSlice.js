@@ -70,6 +70,9 @@ const thirdStepSlice = createSlice({
         value: action.payload[index * 2].coverage_Network,
         color: colors[index],
         city_Name: action.payload[index * 2].city_Name,
+        city_Organization:action.payload[index * 2].city_Organization,
+        country_Organization:action.payload[index * 2].country_Organization,
+        neighbor_City_Organization:action.payload[index * 2].neighbor_City_Organization,
         option: [
           {
             id: 0,
@@ -77,6 +80,7 @@ const thirdStepSlice = createSlice({
             amount: action.payload[index * 2].coverage_Amount,
             answer: "",
             coverageId: action.payload[index * 2].coverage_Code,
+            color: "#FFF",
           },
           {
             id: 1,
@@ -84,6 +88,7 @@ const thirdStepSlice = createSlice({
             amount: action.payload[index * 2 + 1].coverage_Amount,
             answer: "",
             coverageId: action.payload[index * 2 + 1].coverage_Code,
+            color: "#FFF",
           },
         ],
       }));

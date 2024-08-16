@@ -21,7 +21,6 @@ export default function RadioButton({ value, setList, item,control }) {
       onChange={(e) => {
         control&&item.id === 0 && allChecked();
         updateAnswer(item.id, e.target.value);
-        console.log(e.target.value);
       }}
       value={value}
       name="radio-buttons"

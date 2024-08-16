@@ -45,21 +45,21 @@ export default function SearchDropdown() {
       <p>Şehir</p>
 
       <div
-        className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"
+        className="bg-white rounded-md cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2 border-[2px] border-[#CECECE] hover:border-pink-500"
         onClick={() => {
           dispatch(setOpenSearchSelected(!OpenSearchSelected));
           dispatch(closeOther("OpenSearchSelected"));
         }}
       >
-        <span className="text-base">
-          {cityName}
+        <span className="text-base opacity-70">
+          {cityName.length <= 8 ? cityName :cityName.slice(0, 5) + "..."}
         </span>
         <span>
-          <MdOutlineKeyboardArrowDown />
+         <MdOutlineKeyboardArrowDown className="text-xl text-[#CECECE]"/>
         </span>
       </div>
       <div
-        className={` bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-40  flex flex-col gap-2 z-50 ${
+        className={` bg-white border-[1px] py-2 absolute mt-16 overflow-auto w-full h-40  flex flex-col gap-2 z-50 scrollbar-hide ${
           OpenSearchSelected ? "visible" : "invisible"
         }`}
       >

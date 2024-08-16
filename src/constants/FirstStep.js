@@ -129,6 +129,9 @@ export const NETWORKS = [
     color: "#EB1C74",
     yatarakTedaviFiyat: 2070.9,
     yatarakveayaktaFiyat: 8758.7,
+    city_Organization: 118,
+    country_Organization: 493,
+    neighbor_City_Organization: 31,
   },
   {
     id: 1,
@@ -137,6 +140,9 @@ export const NETWORKS = [
     color: "#44BD32",
     yatarakTedaviFiyat: 2148,
     yatarakveayaktaFiyat: 9625.97,
+    city_Organization: 118,
+    country_Organization: 493,
+    neighbor_City_Organization: 31,
   },
   {
     id: 2,
@@ -145,5 +151,8 @@ export const NETWORKS = [
     color: "#1F2346",
     yatarakTedaviFiyat: 2944.8,
     yatarakveayaktaFiyat: 15003.84,
+    city_Organization: 118,
+    country_Organization: 493,
+    neighbor_City_Organization: 31,
   },
 ];

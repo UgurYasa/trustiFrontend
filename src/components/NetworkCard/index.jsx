@@ -68,7 +68,8 @@ export default function NetworkCard({ network }) {
   const { isSelected, isSearchSelected, isCheckBoxSelected } = useSelector(
     (state) => state.firstStep
   );
-  console.log(isSelected, isSearchSelected, isCheckBoxSelected);
+  
+  
 
   return (
     <div className="flex flex-col my-5 py-2">
@@ -98,19 +99,19 @@ export default function NetworkCard({ network }) {
       </div>
       <InstitutionCard
         title={network.city ? network.city : isSearchSelected}
-        number={118}
+        number={network.city_Organization}
         desc={`${network.title} Network'e dahil tüm kurumlar`}
         color={network.color}
       />
       <InstitutionCard
         title="Komşu iller"
-        number={31}
+        number={network.neighbor_City_Organization}
         desc={`${network.title} Network'e dahil tüm kurumlar`}
         color={network.color}
       />
       <InstitutionCard
         title="Türkiye Geneli"
-        number={493}
+        number={network.country_Organization}
         desc={`${network.title} Network'e dahil tüm kurumlar`}
         color={network.color}
       />

@@ -3,15 +3,23 @@ import { useSelector } from "react-redux";
 import { formatNumber } from "../../constants/Functions";
 import RadioButton from "../Forms/ThirdForm/RadioButton";
 
-export default function NetworkDetailCard({ network, setList, list }) {
+const NetworkDetailCard = React.memo(({ network, setList, list }) => {
   const TreatmentCard = ({ title, amount, item }) => {
     const pricing = formatNumber(amount);
 
     return (
       <div className="w-full">
-        <div className="container bg-[#7E7E7E] mt-5 rounded-t-md flex flex-col items-center justify-center py-3">
+        <div
+          className="container bg-[#7E7E7E] mt-5 rounded-t-md flex flex-col items-center justify-center py-3"
+          style={{
+            backgroundColor:
+              list[network.id].option[item.id].color === "#FFF"
+                ? "#7E7E7E"
+                : list[network.id].option[item.id].color,
+          }}
+        >
           <RadioButton
-            value={item.coverageId}
+            value="Evet"
             selectedValue={item.answer}
             item={item}
             setList={setList}
@@ -63,17 +71,17 @@ export default function NetworkDetailCard({ network, setList, list }) {
 
       <InstitutionCard
         title={network.city_Name}
-        number={118}
+        number={network.city_Organization}
         desc="Pembe Network'e dahil tüm kurumlar"
       />
       <InstitutionCard
         title="Komşu iller"
-        number={31}
+        number={network.neighbor_City_Organization}
         desc="Pembe Network'e dahil tüm kurumlar"
       />
       <InstitutionCard
         title="Türkiye Geneli"
-        number={493}
+        number={network.country_Organization}
         desc="Pembe Network'e dahil tüm kurumlar"
       />
 
@@ -87,4 +95,5 @@ export default function NetworkDetailCard({ network, setList, list }) {
       ))}
     </div>
   );
-}
+});
+export default NetworkDetailCard;

@@ -19,7 +19,7 @@ export default function InfoScreen() {
   const { PRIM } = useSelector((state) => state.thirdStep);
 
   const { id, customer_No } = useParams();
-  
+
   const navigate = useNavigate();
   const FormInfo = () => {
     switch (id) {
@@ -28,7 +28,7 @@ export default function InfoScreen() {
           <FirstForm click={validationClick} setClick={setValidationClick} />
         );
       case "2":
-        return <SecondForm CustomerId={customer_No}/>;
+        return <SecondForm CustomerId={customer_No} />;
       case "3":
         return <ThirdForm />;
       case "4":
@@ -77,7 +77,7 @@ export default function InfoScreen() {
               </div>
               <FormInfo />
             </div>
-            <div className="xl:w-2/3 max-lg:hidden flex flex-col xl:mx-14 sticky py-5 ">
+            <div className={`xl:w-2/3 max-lg:hidden flex flex-col xl:mx-14 sticky py-5 ${id==="6"&&"hidden"}`}>
               <div className="flex lg:flex-row flex-col items-center xl:justify-around  max-xl:justify-center h-40 bg-[#EB1C74] max-xl:p-2 max-xl:gap-10">
                 <BsHeartPulse className="text-white text-5xl" />
                 <div>

@@ -36,8 +36,7 @@ const PolicyPDF = () => {
     () => {},
     PRIM.coverageId
   );
-  console.log(coverage);
-  
+
   const POLICY = [
     {
       id: 0,
@@ -100,13 +99,12 @@ const PolicyPDF = () => {
         {
           id: 1,
           label: "Teminat Modeli",
-          value: `${coverage?coverage.coverage_Network:"Pembe"} Network`,
+          value: `${coverage ? coverage.coverage_Network : "Pembe"} Network`,
         },
         {
           id: 2,
           label: "Tedavi Modeli",
-          value: `${coverage?coverage.coverage_Model:"Yatarak"}`,
-
+          value: `${coverage ? coverage.coverage_Model : "Yatarak"}`,
         },
         {
           id: 3,
@@ -122,7 +120,7 @@ const PolicyPDF = () => {
         {
           id: 0,
           label: "Ödenen Tutar",
-          value: `${coverage?coverage.coverage_Amount:"1500"} TL`,
+          value: `${coverage ? coverage.coverage_Amount : "1500"} TL`,
         },
       ],
     },
@@ -145,7 +143,7 @@ const PolicyPDF = () => {
 
     // A4 boyutlarında canvas oluşturulacak
     const canvas = await html2canvas(componentRef.current, {
-      scale: 2, // Daha yüksek çözünürlük için ölçeklendir
+      scale: 5, // Daha yüksek çözünürlük için ölçeklendir
       onclone: (clonedDoc) => {
         // Butonu gizle
         const button = clonedDoc.querySelector("button");
@@ -160,7 +158,11 @@ const PolicyPDF = () => {
 
     // PDF'e resmi ekle (x, y, width, height)
     pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
-    pdf.save("download.pdf");
+    pdf.save(
+      customer.data
+        ? `${customer.data.first_Name}${customer.data.last_Name}Police.pdf`
+        : "Police.pdf"
+    );
   };
 
   const Lines = ({ item }) => {
@@ -173,12 +175,12 @@ const PolicyPDF = () => {
               key={element.id}
               className={`grid grid-cols-7 items-center gap-2 my-1`}
             >
-              <div className="font-semibold text-sm md:text-base col-span-3 px-4 bg-slate-50 py-3">
-                {element.label}
+              <div className="font-black text-xs md:text-sm col-span-3 px-4 bg-slate-400 h-10 flex items-center text-white rounded-xl">
+                <p>{element.label}</p>
               </div>
               <p className="col-span-1">:</p>
-              <div className="text-xs md:text-sm col-span-3 py-3 px-4 bg-slate-100">
-                {element.value}
+              <div className="text-xs md:text-sm col-span-3 px-4 bg-slate-300 h-10 rounded-xl flex items-center">
+                <p>{element.value}</p>
               </div>
             </div>
           ))}

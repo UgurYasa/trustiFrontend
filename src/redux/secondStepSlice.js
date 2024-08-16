@@ -33,7 +33,7 @@ const initialState = {
     address:
       "Sarı Lale Sokak Vedat Günyol Caddesi No:3 Fay Plaza Ataşehir/İSTANBUL",
   },
-  NETWORKSCARDData:[]
+  NETWORKSCARDData: [],
 };
 const secondStepSlice = createSlice({
   name: "secondStepSlice",
@@ -56,13 +56,12 @@ const secondStepSlice = createSlice({
         : state.FAMILYMEMBERS.push(state.FAMILYMEMBER);
     },
     setNetworksCard: (state, action) => {
-    
       const colors = [
         { title: "Pembe", color: "#EB1C74" },
         { title: "Yeşil", color: "#44BD32" },
-        { title: "Lacivert", color: "#1F2346" }
+        { title: "Lacivert", color: "#1F2346" },
       ];
-    
+
       const networks = colors.map((color, index) => {
         const cityIndex = index * 2;
         return {
@@ -71,16 +70,20 @@ const secondStepSlice = createSlice({
           title: color.title,
           color: color.color,
           yatarakTedaviFiyat: action.payload[cityIndex]?.coverage_Amount || 0,
-          yatarakveayaktaFiyat: action.payload[cityIndex + 1]?.coverage_Amount || 0,
+          yatarakveayaktaFiyat:
+            action.payload[cityIndex + 1]?.coverage_Amount || 0,
+          city_Organization: action.payload[cityIndex].city_Organization,
+          neighbor_City_Organization:
+            action.payload[cityIndex + 1].neighbor_City_Organization,
+          country_Organization: action.payload[cityIndex].country_Organization,
         };
       });
       state.NETWORKSCARDData.length === 1
         ? (state.NETWORKSCARDData[0] = networks)
         : state.NETWORKSCARDData.push(networks);
     },
-    
   },
 });
 
-export const { setFamilyMember,setNetworksCard} = secondStepSlice.actions;
+export const { setFamilyMember, setNetworksCard } = secondStepSlice.actions;
 export default secondStepSlice.reducer;

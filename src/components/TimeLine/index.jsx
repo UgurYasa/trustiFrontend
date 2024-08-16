@@ -2,8 +2,8 @@ import React from "react";
 import { TIMELINE } from "../../constants/SecondStep";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function TimeLine({activated}) {
-  const {customer_No}=useParams();
+export default function TimeLine({ activated }) {
+  const { id, customer_No, filterVar } = useParams();
   const navigate = useNavigate();
   const Dot = ({ item }) => {
     return (
@@ -13,7 +13,9 @@ export default function TimeLine({activated}) {
         }`}
         onClick={() => {
           const number = parseInt(item.id) + 1;
-          navigate(`/info/${number}/${customer_No}`);
+          if (id > number) {
+            navigate(`/info/${number}/${customer_No}/${filterVar}`);
+          }
         }}
       >
         <div

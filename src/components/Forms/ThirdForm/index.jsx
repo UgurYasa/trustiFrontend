@@ -10,6 +10,7 @@ import { NETWORKS } from "../../../constants/ThirdStep";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetCoverageById } from "../../../services/hooks/coverages";
 import { setNetworksDetailsData } from "../../../redux/thirdStepSlice";
+import Swal from "sweetalert2";
 
 export default function ThirdForm() {
   const dispatch = useDispatch();
@@ -19,7 +20,26 @@ export default function ThirdForm() {
     (state) => state.thirdStep
   );
   const [list, setList] = useState(NETWORKSDETAILSDATA[0]);
-
+  const onError = () => {
+    Swal.fire({
+      title: "Lütfen Eksikleri Doldurunuz",
+      icon: "error",
+      showClass: {
+        popup: `
+        animate__animated
+        animate__fadeInUp
+        animate__faster
+      `,
+      },
+      hideClass: {
+        popup: `
+        animate__animated
+        animate__fadeOutDown
+        animate__faster
+      `,
+      },
+    });
+  };
   const { data: coverages } = useGetCoverageById(
     () => {
       dispatch(setNetworksDetailsData(coverages));
@@ -33,17 +53,15 @@ export default function ThirdForm() {
   useEffect(() => {
     if (coverages) {
       dispatch(setNetworksDetailsData(coverages));
-    } else {
-      console.log("coverages yok");
     }
   }, [coverages]);
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
-      switch: false,
+      switch: clicked,
     },
     onSubmit: (values) => {
-      values.switch && clicked && navigate("/info/4/" + customer_No);
+      values.switch && clicked ? navigate("/info/4/" + customer_No) : onError();
     },
   });
 

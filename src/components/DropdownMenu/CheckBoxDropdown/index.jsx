@@ -26,15 +26,15 @@ export default function CheckBoxDropdown() {
       <p>Aile Üyesi Ekleyiniz</p>
 
       <div
-        className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"
+        className="bg-white rounded-md cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2 border-[2px] border-[#CECECE] hover:border-[#EC1C74]"
         onClick={() => {
           dispatch(setOpenCheckBoxSelected(!OpenCheckBoxSelected));
           dispatch(closeOther("OpenCheckBoxSelected"));
         }}
       >
-        <span className="text-base">{Label}</span>
+        <span className="text-base opacity-70">{Label}</span>
         <span>
-          <MdOutlineKeyboardArrowDown />
+        <MdOutlineKeyboardArrowDown className="text-2xl text-[#CECECE]"/>
         </span>
       </div>
       <div
@@ -45,7 +45,7 @@ export default function CheckBoxDropdown() {
         {FAMILIES.map((item) => (
           <div
             key={item.id}
-            className={`bg-white cursor-pointer font-semibold gap-2 px-3 py-1 ${
+            className={`bg-white font-semibold gap-2 px-3 py-1 ${
               item.id === 0 ? "hidden" : "block"
             } `}
           >

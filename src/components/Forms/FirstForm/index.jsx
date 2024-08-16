@@ -21,9 +21,8 @@ import Swal from "sweetalert2";
 import "animate.css";
 export default function FirstForm({ click, setClick }) {
   const navigate = useNavigate();
-  const {customer_No} = useParams();
-  console.log(customer_No.split("-"));
-  
+  const { customer_No } = useParams();
+
   const CheckValidation = (values, isUpdated = false) => {
     return (
       TCKValidation(values.tcNo) &&
@@ -110,14 +109,18 @@ export default function FirstForm({ click, setClick }) {
             last_Name: values.name.split(" ").slice(-1)[0],
             email: values.email,
             phone: values.telNo,
-            gender: customer_No.split("-")[0] === "Seçiniz" ? "Erkek" : customer_No.split("-")[0],
+            gender:
+              customer_No.split("-")[0] === "Seçiniz"
+                ? "Erkek"
+                : customer_No.split("-")[0],
             family_Member:
               customer_No.split("-")[2] === "Kendim" ||
               customer_No.split("-")[2] === "Seçiniz"
                 ? "Kendi"
                 : customer_No.split("-")[2],
             city_Id:
-              customer_No.split("-")[1] === "Seçiniz" || customer_No.split("-")[1] <= 0
+              customer_No.split("-")[1] === "Seçiniz" ||
+              customer_No.split("-")[1] <= 0
                 ? 1
                 : customer_No.split("-")[1],
           });
@@ -478,7 +481,10 @@ export default function FirstForm({ click, setClick }) {
                     last_Name: values.name.split(" ").slice(-1)[0],
                     email: values.email,
                     phone: values.telNo,
-                    gender: customer_No.split("-")[0] === "Seçiniz" ? "Erkek" : customer_No.split("-")[0],
+                    gender:
+                      customer_No.split("-")[0] === "Seçiniz"
+                        ? "Erkek"
+                        : customer_No.split("-")[0],
                     family_Member:
                       customer_No.split("-")[2] === "Kendim" ||
                       customer_No.split("-")[2] === "Seçiniz"
