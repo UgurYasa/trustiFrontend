@@ -9,29 +9,29 @@ export const GENDER = [
 
 export const LOCATIONS = [
   {
-    id: 0,
-    label: "Seçiniz",
+    city_Id: 0,
+    city_Name: "Seçiniz",
   },
   {
-    id: 1,
-    label: "Adana",
+    city_Id: 1,
+    city_Name: "Adana",
   },
   {
-    id: 2,
-    label: "Adıyaman",
+    city_Id: 2,
+    city_Name: "Adıyaman",
   },
   {
-    id: 3,
-    label: "Afyonkarahisar",
+    city_Id: 3,
+    city_Name: "Afyonkarahisar",
   },
-  { id: 4, label: "İstanbul" },
-  { id: 5, label: "Ankara" },
-  { id: 6, label: "İzmir" },
-  { id: 7, label: "Bursa" },
-  { id: 8, label: "Antalya" },
-  { id: 9, label: "Aydın" },
-  { id: 10, label: "Balıkesir" },
-  { id: 11, label: "Çanakkale" },
+  { city_Id: 4, city_Name: "İstanbul" },
+  { city_Id: 5, city_Name: "Ankara" },
+  { city_Id: 6, city_Name: "İzmir" },
+  { city_Id: 7, city_Name: "Bursa" },
+  { city_Id: 8, city_Name: "Antalya" },
+  { city_Id: 9, city_Name: "Aydın" },
+  { city_Id: 10, city_Name: "Balıkesir" },
+  { city_Id: 11, city_Name: "Çanakkale" },
 ];
 
 export const FAMILIES = [
@@ -124,6 +124,7 @@ export const AGES = [
 export const NETWORKS = [
   {
     id: 0,
+    city: null,
     title: "Pembe",
     color: "#EB1C74",
     yatarakTedaviFiyat: 2070.9,
@@ -131,6 +132,7 @@ export const NETWORKS = [
   },
   {
     id: 1,
+    city: null,
     title: "Yeşil",
     color: "#44BD32",
     yatarakTedaviFiyat: 2148,
@@ -138,6 +140,7 @@ export const NETWORKS = [
   },
   {
     id: 2,
+    city: null,
     title: "Lacivert",
     color: "#1F2346",
     yatarakTedaviFiyat: 2944.8,

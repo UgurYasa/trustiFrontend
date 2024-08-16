@@ -18,7 +18,8 @@ export default function InfoScreen() {
   const [validationClick, setValidationClick] = useState(true);
   const { PRIM } = useSelector((state) => state.thirdStep);
 
-  const { id } = useParams();
+  const { id, customer_No } = useParams();
+  
   const navigate = useNavigate();
   const FormInfo = () => {
     switch (id) {
@@ -27,7 +28,7 @@ export default function InfoScreen() {
           <FirstForm click={validationClick} setClick={setValidationClick} />
         );
       case "2":
-        return <SecondForm />;
+        return <SecondForm CustomerId={customer_No}/>;
       case "3":
         return <ThirdForm />;
       case "4":

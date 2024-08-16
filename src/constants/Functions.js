@@ -38,3 +38,24 @@ export const formatNumber = (num) => {
   parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   return parts.join(",");
 };
+
+
+export const formatDateToYYYYMMDD = (dateString) => {
+  const date = new Date(dateString);
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Ayı 2 basamaklı yapmak için
+  const day = String(date.getDate()).padStart(2, '0'); // Günü 2 basamaklı yapmak için
+
+  return `${year}-${month}-${day}`;
+};
+
+export default function turkishToUpper() {
+  var string = this;
+  var letters = { i: "İ", ş: "Ş", ğ: "Ğ", ü: "Ü", ö: "Ö", ç: "Ç", ı: "I" };
+  string = string.replace(/(([iışğüçö]))+/g, function (letter) {
+    return letters[letter];
+  });
+  return string.toUpperCase();
+}
+
+String.prototype.turkishToUpper = turkishToUpper;

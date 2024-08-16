@@ -23,7 +23,7 @@ export default function CheckBoxDropdown() {
 
   return (
     <div className="flex flex-col relative w-full">
-      <p>Gender</p>
+      <p>Aile Üyesi Ekleyiniz</p>
 
       <div
         className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"

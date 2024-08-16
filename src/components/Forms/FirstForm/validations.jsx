@@ -57,4 +57,17 @@ export const PhoneNumberValidation = (phoneNumber) => {
   return phonePattern.test(phoneNumber);
 };
 
+export const validateDate = (inputDate) => {
+  if(inputDate===""){
+    return false;
+  }
+  const today = new Date(); // Bugünün tarihini alır
+  const dateParts = inputDate.split("-"); // Tarihi parçalara ayırır
+
+  // Yıl, ay ve gün olarak tarihi oluşturur (Ay 0-11 arasında olduğu için 1 çıkarılıyor)
+  const formattedDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+
+  // Bugünün tarihiyle verilen tarihi karşılaştırır
+  return formattedDate <= today;
+};
 export default validations;

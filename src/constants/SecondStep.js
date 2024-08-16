@@ -44,10 +44,22 @@ export const HOWTOBUY = [
 ];
 
 export const VALIDATIONERRORS = [
-  "Lütfen geçerli Vergi kimlik numarası veya T.C. kimlik numarası giriniz.",
-  "Lütfen doğum tarihini giriniz.",
-  "Sigortalı e-posta adresi giriniz.",
-  "Sigortalı cep telefonu numarasını giriniz.",
+  [
+    "T.C. kimlik numarası alanı boş bırakılamaz",
+    "Lütfen geçerli Vergi kimlik numarası veya T.C. kimlik numarası giriniz.",
+  ],
+  [
+    "Doğum Tarihi alanı boş bırakılamaz",
+    "Lütfen Geçerli bir doğum tarihini giriniz.",
+  ],
+  [
+    "Sigortalı e-posta adresi boş bırakılamaz.",
+    "Lütfen geçerli bir Sigortalı e-posta adresi giriniz.",
+  ],
+  [
+    "Sigortalı cep telefonu numarası boş bırakılamaz.",
+    "Lütfen geçerli bir Sigortalı cep telefonu numarası giriniz.",
+  ],
   "Lütfen Gizlilik Politikası, Kullanıcı Sözleşmesi, KVKK Aydınlatma Metni ve Poliçe Bilgilendirme Formunu okuduğunuzu kabul ediniz.",
   "KVKK Aydınlatma Metnini okuduğunuzu kabul ediniz.",
 ];
@@ -176,4 +188,3 @@ export const PRIM = { proximity: "", title: "Paket Seçiniz", amount: 0 };
 //     ],
 //   },
 // ];
-

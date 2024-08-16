@@ -3,14 +3,15 @@ import { useSelector } from "react-redux";
 import { formatNumber } from "../../constants/Functions";
 import RadioButton from "../Forms/ThirdForm/RadioButton";
 
-export default function NetworkDetailCard({ network, setList,list }) {
+export default function NetworkDetailCard({ network, setList, list }) {
   const TreatmentCard = ({ title, amount, item }) => {
     const pricing = formatNumber(amount);
+
     return (
       <div className="w-full">
         <div className="container bg-[#7E7E7E] mt-5 rounded-t-md flex flex-col items-center justify-center py-3">
           <RadioButton
-            value="Evet"
+            value={item.coverageId}
             selectedValue={item.answer}
             item={item}
             setList={setList}
@@ -61,7 +62,7 @@ export default function NetworkDetailCard({ network, setList,list }) {
       </div>
 
       <InstitutionCard
-        title={isSearchSelected}
+        title={network.city_Name}
         number={118}
         desc="Pembe Network'e dahil tüm kurumlar"
       />
@@ -78,7 +79,7 @@ export default function NetworkDetailCard({ network, setList,list }) {
 
       {network.option.map((element, index) => (
         <TreatmentCard
-          key={index}
+          key={element.coverageId}
           item={element}
           amount={element.amount}
           title={element.title}

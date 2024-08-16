@@ -98,7 +98,13 @@ export const INSURER = [
     answer: "",
   },
 ];
-
+const formatDate = (date) => {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Aylar 0-11 arası olduğu için +1 ekliyoruz
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    };const today = formatDate(new Date());
+const nextYear = formatDate(new Date(new Date().setFullYear(new Date().getFullYear() + 1)));
 export const POLICY = [
   {
     id: 0,
@@ -107,15 +113,10 @@ export const POLICY = [
       {
         id: 0,
         label: "Sigorta Şirketi",
-        value: "Euroko Sigorta",
+        value: "Quick Sigorta",
       },
       {
         id: 1,
-        label: "Poliçe Numarası",
-        value: "012345678",
-      },
-      {
-        id: 2,
         label: "Telefon",
         value: "+90 212 000 00 00",
       },
@@ -143,12 +144,12 @@ export const POLICY = [
       {
         id: 3,
         label: "Sigorta Başlangıç Tarihi",
-        value: "22/07/2024",
+        value: today,
       },
       {
         id: 4,
         label: "Sigorta Başlangıç Tarihi",
-        value: "26/07/2024",
+        value: nextYear,
       },
     ],
   },

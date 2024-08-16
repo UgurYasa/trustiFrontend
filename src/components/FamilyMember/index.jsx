@@ -1,8 +1,11 @@
 import React from "react";
 import { censorWords } from "../../constants/Functions";
 import { FAMILYMEMBER } from "../../constants/SecondStep";
+import { useSelector } from "react-redux";
 
 export default function FamilyMember({ member }) {
+  const {FAMILYMEMBERS} = useSelector((state) => state.secondStep);
+
   const Card = ({ title }) => {
     return (
       <div
@@ -36,11 +39,11 @@ export default function FamilyMember({ member }) {
         </div>
       </div>
       <div className="xl:hidden block my-3 border-[1px] border-slate-500 p-3 bg-white">
-        <Card2 title={FAMILYMEMBER[0].name} value={censorWords(member.name)} />
-        <Card2 title={FAMILYMEMBER[0].tcNo} value={member.tcNo} />
-        <Card2 title={FAMILYMEMBER[0].proximity} value={member.proximity} />
-        <Card2 title={FAMILYMEMBER[0].telNo} value={member.telNo} />
-        <Card2 title={FAMILYMEMBER[0].risk} value={member.risk} />
+        <Card2 title={FAMILYMEMBERS[0].name} value={censorWords(member.name)} />
+        <Card2 title={FAMILYMEMBERS[0].tcNo} value={member.tcNo} />
+        <Card2 title={FAMILYMEMBERS[0].proximity} value={member.proximity} />
+        <Card2 title={FAMILYMEMBERS[0].telNo} value={member.telNo} />
+        <Card2 title={FAMILYMEMBERS[0].risk} value={member.risk} />
       </div>
     </div>
   );

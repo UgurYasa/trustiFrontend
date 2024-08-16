@@ -12,8 +12,7 @@ export default function FifthForm() {
       <QuestionCard item={list[0]} control={1} setList={setList} />
       <p className=" text-3xl text-[#EB1C74] font-semibold mt-4">Ödeme Türü</p>
       <div className="w-full h-[1px] bg-slate-400 my-2" />
-      <PaymentForm isValid={list[0].answer!=""}/>
+      <PaymentForm isValid={list[0].answer != ""} />
     </div>
   );
 }
-

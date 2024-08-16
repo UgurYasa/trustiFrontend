@@ -32,7 +32,7 @@ export default function Slider() {
               Şehrin en iyi hastanesi bana yeter.
             </p>
             <p className="font-semibold md:text-lg text-base">
-              Tamamlayıcı Sağlık Sigortası
+              Farkı Quick öder.
             </p>
           </div>
           <div className="grid grid-cols-5 gap-2 w-full">
@@ -40,6 +40,7 @@ export default function Slider() {
               <Link
                 key={index}
                 className="hover:bg-[#1F2346] hover:text-white rounded-lg p-2 xl:col-span-1 col-span-5 border-[1px] border-slate-500 text-center"
+                target="_blank"
                 to={"/" + item}
               >
                 {item}

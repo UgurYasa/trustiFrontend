@@ -4,6 +4,7 @@ export const NETWORKS = [
     title: "Pembe Network",
     value: "Pembe",
     color: "#EB1C74",
+    city_Name: "İstanbul",
     option: [
       {
         id: 0,
@@ -25,7 +26,7 @@ export const NETWORKS = [
     title: "Yeşil Network",
     value: "Yeşil",
     color: "#44BD32",
-
+    city_Name:"İstanbul",
     option: [
       {
         id: 0,
@@ -46,6 +47,7 @@ export const NETWORKS = [
     title: "Lacivert Network",
     value: "Lacivert",
     color: "#1F2346",
+    city_Name:"İstanbul",
     option: [
       {
         id: 0,

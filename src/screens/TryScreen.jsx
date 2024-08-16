@@ -1,60 +1,50 @@
-import React from "react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getToDos, postPost } from "../services/try";
-import ReactQueryProvider from "../services/Provider";
-import { useGetTodos, usePostPost } from "../services/hooks/todos";
+import React, { useEffect, useState } from "react";
+import {
+  useDeclarationPerson,
+  useDeclarations,
+} from "../services/hooks/declarations";
+import { DECLARATION } from "../constants/FourthStep";
 
-const Example = () => {
-  const onSuccess = () => console.log("success");
-  const onError = (error) => console.log(error.message);
-  const { isLoading, isError, isFetched, data, error, dataUpdatedAt } =
-    useGetTodos(onSuccess, onError);
-  const { mutate, status } = usePostPost(onSuccess, onError);
-
-  // const { isLoading, isError, isFetched, data, error, dataUpdatedAt } =
-  // useQuery({
-  //   queryKey: ["todos"],
-  //   queryFn: getToDos,
-  // });
-
-  // const { mutate } = useMutation({
-  //   mutationFn: postPost,
-  //   onError: (error) => console.log(error.message),
-  //   onSuccess: () => console.log("success"),
-  // });
+function TryScreen() {
+  const { data: DeclarationPerson } = useDeclarationPerson(
+    () => {},
+    () => {}
+  );
+  const { data: Declaration } = useDeclarations(
+    () => {},
+    () => {}
+  );
+  const [declaration,setDeclarationList] = useState(DECLARATION);
+  useEffect(() => {
+   if(DeclarationPerson){
+    const updatedList = DeclarationPerson&& DeclarationPerson.map((item) => ({
+      id: item.declaration_Id,
+      question: item.declaration_question,
+      answer: item.answer,
+    }));
+    
+    setDeclarationList(updatedList?updatedList:[]);
+    console.log(updatedList);
+   }
+  }, [DeclarationPerson]);
+  
   return (
     <div>
-      {isLoading && <div>Loading...</div>}
-      <div>dataUpdatedAt: {dataUpdatedAt}</div>
-      {isError && <div>Error: {error.message}</div>}
-      {isFetched && (
-        <div>
-          {data.slice(0, 5).map((item) => (
-            <div key={item.id}>{item.title}</div>
-          ))}
-        </div>
-      )}
-      <div>{status}</div>
-      <button
-        className="py-10"
-        onClick={() => {
-          mutate({
-            title:
-              "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-            body: "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto",
-          });
-        }}
-      >
-        gönder
-      </button>
+      <h2>Declaration</h2>
+      {Declaration &&
+        Declaration.map((item, index) => (
+          <div key={index}>
+            <p>{`${item.declaration_Id} - ${item.declaration_Question}`}</p>
+          </div>
+        ))}
+      <h2 className="mt-96">Declaration Person</h2>
+     {DeclarationPerson &&DeclarationPerson.map((item, index) => 
+    <div key={index}>
+      <p>{`Name: ${item.firstname} ${item.lastname} ---> Question:  ${item.declaration_question} ---> Answer: ${item.answer} ---> Description: ${item.description}`}</p>
+      </div>
+    )}
     </div>
   );
-};
-
-export default function TryScreen() {
-  return (
-    <ReactQueryProvider>
-      <Example />
-    </ReactQueryProvider>
-  );
 }
+
+export default TryScreen;

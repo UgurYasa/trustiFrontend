@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import DeclarationForm, { QuestionCard } from "../../DeclarationForm";
 import { FaInfoCircle } from "react-icons/fa";
 import { DECLARATION, OTHERCOMPANY } from "../../../constants/FourthStep";
@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 
 export default function FourthForm() {
+  const {customer_No} = useParams();
   const navigate = useNavigate();
   const { PRIM } = useSelector((state) => state.thirdStep);
   const [list, setList] = React.useState(OTHERCOMPANY);
@@ -22,7 +23,7 @@ export default function FourthForm() {
       checkbox: [],
     },
     onSubmit: (values) => {
-      allChecked(list) && allChecked(list2) && navigate("/info/5");
+      allChecked(list) && allChecked(list2) && navigate("/info/5/"+customer_No);
     },
   });
   return (

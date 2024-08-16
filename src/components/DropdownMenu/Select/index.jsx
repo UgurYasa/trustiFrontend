@@ -8,7 +8,7 @@ export default function Select({ data, isShowTitle, selected, setSelected }) {
   const dispatch = useDispatch();
   return (
     <div className="flex flex-col relative">
-      <p className={`${isShowTitle ? "block" : "hidden"}`}>Gender</p>
+      <p className={`${isShowTitle ? "block" : "hidden"}`}>Cinsiyet</p>
       <div
         className="bg-white rounded-lg cursor-pointer font-semibold flex flex-row items-center justify-between  h-10 px-2"
         onClick={() => {

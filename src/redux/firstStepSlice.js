@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { useQueryClient } from "@tanstack/react-query";
+import Swal from "sweetalert2";
+import 'animate.css';
 const initialState = {
   isSelected: "Seçiniz",
-  isSearchSelected: "Seçiniz",
+  isSearchSelected: 0,
   isCheckBoxSelected: ["Seçiniz"],
   OpenSelected: false,
   OpenSearchSelected: false,
@@ -30,12 +32,15 @@ const firstStepSlice = createSlice({
     },
     setOpenSelected: (state, action) => {
       state.OpenSelected = action.payload;
+      state.fiyatAl = false;
     },
     setOpenSearchSelected: (state, action) => {
       state.OpenSearchSelected = action.payload;
+      state.fiyatAl = false;
     },
     setOpenCheckBoxSelected: (state, action) => {
       state.OpenCheckBoxSelected = action.payload;
+      state.fiyatAl = false;
     },
     clearAll: (state) => {
       state.isSelected = "Seçiniz";
@@ -64,7 +69,25 @@ const firstStepSlice = createSlice({
       state.isCheckBoxSelected != ["Seçiniz"]
         ? (state.fiyatAl = true)
         : (state.fiyatAl = false);
-      !state.fiyatAl && alert("Lütfen tüm alanları doldurunuz.");
+      !state.fiyatAl &&
+        Swal.fire({
+          title: "Lütfen tüm alanları doldurunuz.",
+          icon: "warning",
+          showClass: {
+            popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+          `,
+          },
+          hideClass: {
+            popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+          `,
+          },
+        });
     },
   },
 });

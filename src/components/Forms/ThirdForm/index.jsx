@@ -1,29 +1,52 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
-import { useNavigate } from "react-router-dom";
-import { FormControlLabel, Switch } from "@mui/material";
+import { useNavigate, useParams } from "react-router-dom";
+import { Switch } from "@mui/material";
 import { CiSearch } from "react-icons/ci";
 import NetworkDetailCard from "../../NetworkDetailCard";
 import CollateralDetails from "../../CollateralDetails";
 import ThirdSection from "../../Sections/ThirdSection";
 import { NETWORKS } from "../../../constants/ThirdStep";
 import { useDispatch, useSelector } from "react-redux";
-import { setClicked } from "../../../redux/thirdStepSlice";
+import { useGetCoverageById } from "../../../services/hooks/coverages";
+import { setNetworksDetailsData } from "../../../redux/thirdStepSlice";
 
 export default function ThirdForm() {
-  const navigate = useNavigate();
-  const [list, setList] = useState(NETWORKS);
-  const { PRIM, clicked } = useSelector((state) => state.thirdStep);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { customer_No, filterVar } = useParams();
+  const { PRIM, clicked, NETWORKSDETAILSDATA } = useSelector(
+    (state) => state.thirdStep
+  );
+  const [list, setList] = useState(NETWORKSDETAILSDATA[0]);
+
+  const { data: coverages } = useGetCoverageById(
+    () => {
+      dispatch(setNetworksDetailsData(coverages));
+    },
+    () => {
+      alert("Hata oluştu");
+    },
+    filterVar ? filterVar : 1
+  );
+
+  useEffect(() => {
+    if (coverages) {
+      dispatch(setNetworksDetailsData(coverages));
+    } else {
+      console.log("coverages yok");
+    }
+  }, [coverages]);
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       switch: false,
     },
     onSubmit: (values) => {
-      values.switch && clicked && navigate("/info/4");
+      values.switch && clicked && navigate("/info/4/" + customer_No);
     },
   });
+
   return (
     <form onSubmit={handleSubmit}>
       <div className=" bg-[#EFF0FF] container min-h-screen">
@@ -40,14 +63,10 @@ export default function ThirdForm() {
           <p className="text-black text-lg">
             Ek prim ile ÖBYG değerlendirme süresini değişirmek istiyorum
           </p>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={values.switch}
-                onChange={handleChange}
-                name="switch"
-              />
-            }
+          <Switch
+            checked={values.switch}
+            onChange={handleChange}
+            name="switch"
           />
         </div>
         <div className="xl:hidden block my-10">
@@ -64,7 +83,7 @@ export default function ThirdForm() {
         </div>
         <div className="w-full h-[1px] bg-slate-400 my-2" />
         <div className="grid grid-cols-3 gap-3">
-          {NETWORKS.map((network, index) => (
+          {NETWORKSDETAILSDATA[0].map((network, index) => (
             <div key={index} className="xl:col-span-1 col-span-3">
               <NetworkDetailCard
                 network={network}

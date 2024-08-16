@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { DECLARATION } from "../../constants/FourthStep";
 import { censorWords } from "../../constants/Functions";
-import { FAMILYMEMBER } from "../../constants/SecondStep";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
 import { LiaStethoscopeSolid } from "react-icons/lia";
 import RadioButton from "../RadioButton";
+import { useSelector } from "react-redux";
 
-export const QuestionCard = ({ item, control = 0, setList,option }) => {
+
+export const QuestionCard = ({ item, control = 0, setList, option }) => {
   return (
     <div className="grid grid-cols-6 max-xl:my-4">
       <div
@@ -75,6 +76,7 @@ export const QuestionCard = ({ item, control = 0, setList,option }) => {
 };
 export default function DeclarationForm({ list, setList }) {
   const [click, setClick] = useState(true);
+  const { FAMILYMEMBERS } = useSelector((state) => state.secondStep);
   return (
     <div>
       <div className="w-full bg-white shadow-lg shadow-slate-500 rounded-2xl flex flex-col px-4 py-5 my-10">
@@ -82,9 +84,9 @@ export default function DeclarationForm({ list, setList }) {
           <div className="flex flex-row items-center gap-4">
             <LiaStethoscopeSolid className="bg-red-300 text-white text-4xl p-2 rounded-full" />
             <p className="text-xl">
-              {censorWords(FAMILYMEMBER[1].name) +
+              {censorWords(FAMILYMEMBERS[1].name) +
                 " (" +
-                FAMILYMEMBER[1].proximity +
+                FAMILYMEMBERS[1].proximity +
                 ")"}
             </p>
           </div>
@@ -108,7 +110,12 @@ export default function DeclarationForm({ list, setList }) {
         {click && (
           <div>
             {list.slice(0, -2).map((item) => (
-              <QuestionCard key={item.id} item={item} setList={setList} option={true}/>
+              <QuestionCard
+                key={item.id}
+                item={item}
+                setList={setList}
+                option={true}
+              />
             ))}
           </div>
         )}

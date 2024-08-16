@@ -1,38 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { LOCATIONS } from "../../../constants/FirstStep";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useSelector, useDispatch } from "react-redux";
+import turkishToUpper from "../../../constants/Functions";
 import {
   closeOther,
   setisSearchSelected,
   setOpenSearchSelected,
 } from "../../../redux/firstStepSlice";
+import { useGetCities } from "../../../services/hooks/cities";
+import { useQueryClient } from "@tanstack/react-query";
+import { LOCATIONS } from "../../../constants/FirstStep";
 
 export default function SearchDropdown() {
-  String.prototype.turkishToUpper = function () {
-    var string = this;
-    var letters = { i: "İ", ş: "Ş", ğ: "Ğ", ü: "Ü", ö: "Ö", ç: "Ç", ı: "I" };
-    string = string.replace(/(([iışğüçö]))+/g, function (letter) {
-      return letters[letter];
-    });
-    return string.toUpperCase();
-  };
-  const [filterList, setFilterList] = useState(LOCATIONS);
+  const { data: CITIES,isLoading,isError } = useGetCities(
+    () => console.log("success"),
+    (error) => console.log(error.message)
+  );
+  const queryClient = useQueryClient();
+  const [filterList, setFilterList] = useState(CITIES?CITIES:LOCATIONS);
   const [word, setword] = useState("");
+  const [cityName, setCityName] = useState("Seçiniz");
 
   const { OpenSearchSelected, isSearchSelected } = useSelector(
     (state) => state.firstStep
   );
   const dispatch = useDispatch();
 
-  const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
   const handleChanges = (e) => {
     setword(e.target.value);
   };
   useEffect(() => {
+    queryClient.invalidateQueries({ queryKey: ["Locations"] });
+    setFilterList(CITIES?CITIES:LOCATIONS);
+  }, [CITIES]);
+  useEffect(() => {
     setFilterList(
-      LOCATIONS.filter((item) =>
-        item.label.turkishToUpper().includes(word.turkishToUpper())
+      CITIES?CITIES:LOCATIONS.filter((item) =>
+        item.city_Name.turkishToUpper().includes(word.turkishToUpper())
       )
     );
   }, [word]);
@@ -47,7 +51,9 @@ export default function SearchDropdown() {
           dispatch(closeOther("OpenSearchSelected"));
         }}
       >
-        <span className="text-base">{isSearchSelected}</span>
+        <span className="text-base">
+          {cityName}
+        </span>
         <span>
           <MdOutlineKeyboardArrowDown />
         </span>
@@ -58,18 +64,22 @@ export default function SearchDropdown() {
         }`}
       >
         <input className="px-2 py-1 border-2" onChange={handleChanges} />
-        {filterList.map((item) => (
-          <div
-            key={item.id}
-            className="hover:bg-slate-400 bg-white cursor-pointer font-semibold border-[1px] "
-            onClick={() => {
-              dispatch(setisSearchSelected(item.label));
-              dispatch(setOpenSearchSelected(false));
-            }}
-          >
-            {item.label}
-          </div>
-        ))}
+        {filterList &&
+          filterList.map((item) => (
+            <div
+              key={item.city_Id}
+              className="hover:bg-slate-400 bg-white cursor-pointer font-semibold border-[1px] "
+              onClick={() => {
+                dispatch(
+                  setisSearchSelected(CITIES ? item.city_Id : item.city_Name)
+                );
+                dispatch(setOpenSearchSelected(false));
+                setCityName(item.city_Name);
+              }}
+            >
+              {item.city_Name}
+            </div>
+          ))}
       </div>
     </div>
   );
