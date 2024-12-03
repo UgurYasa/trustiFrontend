@@ -67,7 +67,7 @@ export default function HomeScreen() {
       )}
 
       <div className="container flex items-center text-2xl leading-10 my-2">
-        İhtiyaç duyduğunuz her anda uygun fiyat ve ödeme koşulları ile “Quick
+        İhtiyaç duyduğunuz her anda uygun fiyat ve ödeme koşulları ile Trusti
         Tamamlayıcı Sağlık Sigortası” yanınızda…
         <br />
         Bulunduğunuz şehrin en iyi hastanelerinde uygun prim ödeyerek özel
@@ -77,11 +77,11 @@ export default function HomeScreen() {
       </div>
       <div className="container flex flex-col text-2xl leading-10 my-2">
         <h1 className="font-bolder md:text-5xl text-[#EB1C74]">
-          Quick Tamamlayıcı Sağlık Sigortası
+        Trusti Tamamlayıcı Sağlık Sigortası
         </h1>
         <h2 className="font-bolder md:text-3xl">Nedir?</h2>
         <p>
-          Quick Tamamlayıcı Sağlık Sigortası, Sosyal Güvenlik Kurumu (SGK)
+        Trust Tamamlayıcı Sağlık Sigortası, Sosyal Güvenlik Kurumu (SGK)
           kapsamında karşılanan sağlık giderlerinizde oluşan fark ücretlerini,
           yalnızca SGK zorunlu katılım payını ödeyerek karşılayabilmenize imkân
           veren bir özel sağlık sigorta ürünüdür.

@@ -58,9 +58,9 @@ export default function InfoScreen() {
       <div className="bg-white w-full h-14 flex items-center sticky z-50 top-0">
         <div className="container flex max-md:justify-center max-md:items-center">
           <img
-            src="https://www.quicksigorta.com/Content/images/logo_quicksigorta_1x.webp"
-            alt="Quicksigorta Logo"
-            className="h-8 cursor-pointer"
+            src="/src/assets/images/subLogo.png"
+            alt="Trusti Logo"
+            className="h-10 cursor-pointer"
             onClick={() => {
               navigate("/");
             }}
@@ -81,7 +81,7 @@ export default function InfoScreen() {
               <div className="flex lg:flex-row flex-col items-center xl:justify-around  max-xl:justify-center h-40 bg-[#EB1C74] max-xl:p-2 max-xl:gap-10">
                 <BsHeartPulse className="text-white text-5xl" />
                 <div>
-                  <p className="font-black text-2xl text-white">Quick</p>
+                  <p className="font-black text-2xl text-white">Trusti</p>
                   <p className="font-black text-2xl text-white">Tamamlayıcı</p>
                   <p className="font-bold text-xl text-white">
                     <span className="font-black">Sağlık</span> Sigortası

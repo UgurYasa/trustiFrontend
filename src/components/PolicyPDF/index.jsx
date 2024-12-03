@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import QuickLogo from "../../assets/images/logo.png";
+import QuickLogo from "../../assets/images/subLogo.png";
 import Barcode from "../../assets/images/barcode.png";
 import { IoMdDownload } from "react-icons/io";
 import { useParams } from "react-router-dom";
@@ -45,7 +45,7 @@ const PolicyPDF = () => {
         {
           id: 0,
           label: "Sigorta Şirketi",
-          value: "Quick Sigorta",
+          value: "Trusti Sigorta",
         },
         {
           id: 1,
@@ -207,8 +207,8 @@ const PolicyPDF = () => {
         <div className="flex flex-row items-center justify-between md:mb-4 ">
           <img
             src={QuickLogo}
-            alt="Quicksigorta Logo"
-            className="h-8 md:h-10 object-contain"
+            alt="Trusti Logo"
+            className="h-10 md:h-12 object-contain"
           />
           <img
             src={Barcode}

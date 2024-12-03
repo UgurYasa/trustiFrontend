@@ -5,7 +5,7 @@ export default function FirstSection() {
     return (
         <div>
           <p className="text-[#EB1C74] font-bold text-lg">
-            Quick Tamamlayıcı Sağlık Sigortası <br /> nasıl alınır?
+            Trusti Tamamlayıcı Sağlık Sigortası <br /> nasıl alınır?
           </p>
     
           {HOWTOBUY.map((item, index) => (

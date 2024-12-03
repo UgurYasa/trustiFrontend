@@ -24,7 +24,7 @@ export default function Slider() {
           <div className="flex flex-col gap-4 xl:py-20 xl:px-10 px-5 xl:w-2/3 w-full">
             <div className="flex flex-col mb-10">
               <h1 className="xl:text-5xl text-2xl font-bold text-[#1F2346]">
-                Quick
+                Trusti
               </h1>
               <p className="font-normal xl:text-5xl md:text-3xl text-lg text-[#1F2346]">
                 Tamamlayıcı Sağlık Sigortası
@@ -35,7 +35,7 @@ export default function Slider() {
                 Şehrin en iyi hastanesi bana yeter.
               </p>
               <p className="font-medium md:text-2xl text-base">
-                Farkı Quick öder.
+                Farkı Trusti öder.
               </p>
             </div>
             <div className="grid grid-cols-5 gap-2 w-full">
@@ -79,16 +79,11 @@ export default function Slider() {
               </div>
             </div>
           </div>
-          <div className="flex xl:flex-row flex-col">
-            <img
-              src="https://www.quicksigorta.com/Content/images/svg/tss-slogan.svg"
-              alt="Quick Sağlık Sigortası"
-              className="xl:w-1/3 max-h-[400px] xl:-mt-20"
-            />
+          <div className="flex">
             <img
               src="https://www.quicksigorta.com/Content/images/svg/tss-characters-obyg.webp"
-              alt="Quick Sağlık Sigortası"
-              className="xl:w-2/3 max-h-[450px]"
+              alt="Trusti Sigortası"
+              className="xl:w-full max-h-[450px]"
             />
           </div>
         </div>

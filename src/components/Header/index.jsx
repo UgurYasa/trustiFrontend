@@ -8,8 +8,8 @@ export default function Header() {
     <div className="border-b-[1px] flex items-center justify-center shadow-[#EAF1F6] shadow-2xl sticky z-50 top-0 bg-white">
       <div className="flex container items-center justify-around">
         <img
-          src="https://www.quicksigorta.com/Content/images/logo_quicksigorta_1x.webp"
-          alt="Quicksigorta Logo"
+          src="/src/assets/images/logo.png"
+          alt="Trusti Logo"
           className="h-16 cursor-pointer"
           onClick={() => {
             navigate("/");
@@ -43,7 +43,7 @@ export default function Header() {
         <p className="text-[#1F3356] text-xl cursor-pointer max-xl:hidden" onClick={() => {
             navigate("/q-dunyasi");
           }}>
-          Q Dünyası
+          T Dünyası
         </p>
         <div className="flex flex-col gap-2 mb-2 max-xl:hidden">
           <p>{`Hoşgeldiniz, ${name}`}</p>
